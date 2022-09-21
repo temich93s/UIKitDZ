@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VuR-mk-ORr">
+                                <rect key="frame" x="118.5" y="364" width="177" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Угадай число">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="actionButtonGuessNumber:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xwY-aV-gA1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4FF-KO-z7w">
+                                <rect key="frame" x="108" y="578" width="198" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Сложить числа">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="actionButtonSum:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oB4-jO-TTu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сыграем?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woO-rY-d4D">
+                                <rect key="frame" x="149" y="294" width="116" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат суммы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWs-fe-kJr">
+                                <rect key="frame" x="109.5" y="508" width="195.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ФИО" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2j0-JL-epK">
+                                <rect key="frame" x="178.5" y="164" width="57" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNU-xY-UCz">
+                                <rect key="frame" x="83.5" y="778" width="247" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Перейти на экран 2">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="RSd-p2-iLt" kind="presentation" modalPresentationStyle="fullScreen" id="pQU-sQ-GLr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VuR-mk-ORr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6Cj-go-iPF"/>
+                            <constraint firstItem="4FF-KO-z7w" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="GcY-yd-sdv"/>
+                            <constraint firstItem="2j0-JL-epK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="NwW-bR-kJl"/>
+                            <constraint firstItem="VuR-mk-ORr" firstAttribute="top" secondItem="woO-rY-d4D" secondAttribute="bottom" constant="40" id="XUQ-fp-Xee"/>
+                            <constraint firstItem="2j0-JL-epK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ZIH-cb-cPy"/>
+                            <constraint firstItem="4FF-KO-z7w" firstAttribute="top" secondItem="GWs-fe-kJr" secondAttribute="bottom" constant="40" id="awR-3b-Qwf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DNU-xY-UCz" secondAttribute="bottom" constant="40" id="c7s-uQ-MU3"/>
+                            <constraint firstItem="GWs-fe-kJr" firstAttribute="top" secondItem="VuR-mk-ORr" secondAttribute="bottom" constant="100" id="irI-Jt-Yvh"/>
+                            <constraint firstItem="woO-rY-d4D" firstAttribute="top" secondItem="2j0-JL-epK" secondAttribute="bottom" constant="100" id="n6c-FC-uCg"/>
+                            <constraint firstItem="woO-rY-d4D" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="nUX-Fu-2vv"/>
+                            <constraint firstItem="DNU-xY-UCz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="tdB-pp-aVI"/>
+                            <constraint firstItem="GWs-fe-kJr" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ylS-1L-3LR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HS3-Qu-Lbq"/>
+                    <connections>
+                        <outlet property="buttonGuessNumber" destination="VuR-mk-ORr" id="8ga-hx-jE2"/>
+                        <outlet property="buttonSum" destination="4FF-KO-z7w" id="SY9-rj-r7K"/>
+                        <outlet property="labelFIO" destination="2j0-JL-epK" id="UTG-IE-yDD"/>
+                        <outlet property="labelResultGuessNumber" destination="woO-rY-d4D" id="cR4-oh-lcH"/>
+                        <outlet property="labelSum" destination="GWs-fe-kJr" id="yHf-uC-5Vz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="12" y="67"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="E96-sE-9Tv">
+            <objects>
+                <viewController id="RSd-p2-iLt" customClass="GameViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cQX-Hp-r0s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WS3-eU-3KL">
+                                <rect key="frame" x="85" y="778" width="244" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Перейти на экран 1">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="e5G-Fq-cob"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cdl-R0-gsE">
+                                <rect key="frame" x="151" y="438" width="112.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHf-4k-YZ7">
+                                <rect key="frame" x="126" y="528" width="162" height="44"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Начать игру">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonStartGameAction:" destination="RSd-p2-iLt" eventType="touchUpInside" id="l74-CV-8nZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="😐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHx-MW-vvC">
+                                <rect key="frame" x="98" y="139" width="218" height="239"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="200"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FPi-QP-NeK"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Cdl-R0-gsE" firstAttribute="centerY" secondItem="FPi-QP-NeK" secondAttribute="centerY" id="1Y7-qr-yiM"/>
+                            <constraint firstItem="Cdl-R0-gsE" firstAttribute="top" secondItem="cHx-MW-vvC" secondAttribute="bottom" constant="60" id="6AE-yT-76A"/>
+                            <constraint firstItem="CHf-4k-YZ7" firstAttribute="top" secondItem="Cdl-R0-gsE" secondAttribute="bottom" constant="60" id="73X-6H-KfC"/>
+                            <constraint firstItem="cHx-MW-vvC" firstAttribute="centerX" secondItem="FPi-QP-NeK" secondAttribute="centerX" id="EGf-09-4ga"/>
+                            <constraint firstItem="FPi-QP-NeK" firstAttribute="bottom" secondItem="WS3-eU-3KL" secondAttribute="bottom" constant="40" id="TUp-34-ghs"/>
+                            <constraint firstItem="Cdl-R0-gsE" firstAttribute="centerX" secondItem="FPi-QP-NeK" secondAttribute="centerX" id="bnJ-K6-gc4"/>
+                            <constraint firstItem="WS3-eU-3KL" firstAttribute="centerX" secondItem="FPi-QP-NeK" secondAttribute="centerX" id="qn9-Yp-uaU"/>
+                            <constraint firstItem="CHf-4k-YZ7" firstAttribute="centerX" secondItem="FPi-QP-NeK" secondAttribute="centerX" id="zqV-Vm-RUl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6vc-VQ-7xS"/>
+                    <connections>
+                        <outlet property="buttonStartGame" destination="CHf-4k-YZ7" id="iNe-on-NGd"/>
+                        <outlet property="labelEmoji" destination="cHx-MW-vvC" id="oCh-9u-gGA"/>
+                        <outlet property="labelResult" destination="Cdl-R0-gsE" id="EBz-c4-OuB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qPS-3i-0pQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902.89855072463774" y="66.964285714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
