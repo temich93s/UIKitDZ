@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		AA21AF9428DB1CC2000D9213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21AF9328DB1CC2000D9213 /* AppDelegate.swift */; };
 		AA21AF9628DB1CC2000D9213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21AF9528DB1CC2000D9213 /* SceneDelegate.swift */; };
-		AA21AF9828DB1CC2000D9213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21AF9728DB1CC2000D9213 /* ViewController.swift */; };
 		AA21AF9B28DB1CC2000D9213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA21AF9928DB1CC2000D9213 /* Main.storyboard */; };
 		AA21AF9D28DB1CC3000D9213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */; };
 		AA21AFA028DB1CC3000D9213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA21AF9E28DB1CC3000D9213 /* LaunchScreen.storyboard */; };
+		AA6B08BD28DE7D1A00628C99 /* Lightwire - Sunset.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA6B08BC28DE7D1A00628C99 /* Lightwire - Sunset.mp3 */; };
+		AA6B08BF28DE7D1F00628C99 /* Lightwire - Over Powered.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA6B08BE28DE7D1F00628C99 /* Lightwire - Over Powered.mp3 */; };
+		AA6B08C128DE7F2600628C99 /* MusicPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6B08C028DE7F2600628C99 /* MusicPlist.swift */; };
+		AAE3D82A28DDD4A2001C0773 /* Lightwire - City of Dreams.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AAE3D82928DDD4A2001C0773 /* Lightwire - City of Dreams.mp3 */; };
+		AAE3D82E28DDDA27001C0773 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3D82D28DDDA27001C0773 /* PlayerViewController.swift */; };
+		AAE3D83028DDDA40001C0773 /* PlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3D82F28DDDA40001C0773 /* PlistViewController.swift */; };
+		AAE3D83228DDE2B3001C0773 /* DataMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE3D83128DDE2B3001C0773 /* DataMusic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA21AF9028DB1CC2000D9213 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA21AF9328DB1CC2000D9213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA21AF9528DB1CC2000D9213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AA21AF9728DB1CC2000D9213 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA21AF9A28DB1CC2000D9213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA21AF9F28DB1CC3000D9213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA21AFA128DB1CC3000D9213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA6B08BC28DE7D1A00628C99 /* Lightwire - Sunset.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lightwire - Sunset.mp3"; sourceTree = "<group>"; };
+		AA6B08BE28DE7D1F00628C99 /* Lightwire - Over Powered.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lightwire - Over Powered.mp3"; sourceTree = "<group>"; };
+		AA6B08C028DE7F2600628C99 /* MusicPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlist.swift; sourceTree = "<group>"; };
+		AAE3D82928DDD4A2001C0773 /* Lightwire - City of Dreams.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lightwire - City of Dreams.mp3"; sourceTree = "<group>"; };
+		AAE3D82D28DDDA27001C0773 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		AAE3D82F28DDDA40001C0773 /* PlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistViewController.swift; sourceTree = "<group>"; };
+		AAE3D83128DDE2B3001C0773 /* DataMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMusic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,53 @@
 		AA21AF9228DB1CC2000D9213 /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
+				AAE3D82828DDD48C001C0773 /* Resources */,
+				AAE3D82728DDC7C0001C0773 /* Views */,
+				AAE3D82628DDC7B4001C0773 /* Controllers */,
+				AAE3D82528DDBD5A001C0773 /* Models */,
 				AA21AF9328DB1CC2000D9213 /* AppDelegate.swift */,
 				AA21AF9528DB1CC2000D9213 /* SceneDelegate.swift */,
-				AA21AF9728DB1CC2000D9213 /* ViewController.swift */,
-				AA21AF9928DB1CC2000D9213 /* Main.storyboard */,
 				AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */,
 				AA21AF9E28DB1CC3000D9213 /* LaunchScreen.storyboard */,
 				AA21AFA128DB1CC3000D9213 /* Info.plist */,
 			);
 			path = UIKitDZ;
+			sourceTree = "<group>";
+		};
+		AAE3D82528DDBD5A001C0773 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AAE3D83128DDE2B3001C0773 /* DataMusic.swift */,
+				AA6B08C028DE7F2600628C99 /* MusicPlist.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AAE3D82628DDC7B4001C0773 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AAE3D82D28DDDA27001C0773 /* PlayerViewController.swift */,
+				AAE3D82F28DDDA40001C0773 /* PlistViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AAE3D82728DDC7C0001C0773 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA21AF9928DB1CC2000D9213 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AAE3D82828DDD48C001C0773 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AAE3D82928DDD4A2001C0773 /* Lightwire - City of Dreams.mp3 */,
+				AA6B08BE28DE7D1F00628C99 /* Lightwire - Over Powered.mp3 */,
+				AA6B08BC28DE7D1A00628C99 /* Lightwire - Sunset.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +178,9 @@
 			files = (
 				AA21AFA028DB1CC3000D9213 /* LaunchScreen.storyboard in Resources */,
 				AA21AF9D28DB1CC3000D9213 /* Assets.xcassets in Resources */,
+				AA6B08BF28DE7D1F00628C99 /* Lightwire - Over Powered.mp3 in Resources */,
+				AAE3D82A28DDD4A2001C0773 /* Lightwire - City of Dreams.mp3 in Resources */,
+				AA6B08BD28DE7D1A00628C99 /* Lightwire - Sunset.mp3 in Resources */,
 				AA21AF9B28DB1CC2000D9213 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,9 +213,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA21AF9828DB1CC2000D9213 /* ViewController.swift in Sources */,
+				AAE3D83228DDE2B3001C0773 /* DataMusic.swift in Sources */,
+				AAE3D82E28DDDA27001C0773 /* PlayerViewController.swift in Sources */,
 				AA21AF9428DB1CC2000D9213 /* AppDelegate.swift in Sources */,
 				AA21AF9628DB1CC2000D9213 /* SceneDelegate.swift in Sources */,
+				AAE3D83028DDDA40001C0773 /* PlistViewController.swift in Sources */,
+				AA6B08C128DE7F2600628C99 /* MusicPlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
