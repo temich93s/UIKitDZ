@@ -143,8 +143,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZuP-Hf-0JJ"/>
                     <connections>
-                        <outlet property="email" destination="ltX-za-rBe" id="Xtf-QW-RBm"/>
-                        <outlet property="password" destination="gUs-QD-Epa" id="ou2-mX-OAS"/>
+                        <outlet property="emailTextField" destination="ltX-za-rBe" id="Xtf-QW-RBm"/>
+                        <outlet property="passwordTextField" destination="gUs-QD-Epa" id="ou2-mX-OAS"/>
                         <segue destination="1A9-MJ-93K" kind="show" identifier="CreateAccount" id="2n7-yi-cf5"/>
                     </connections>
                 </viewController>
@@ -173,7 +173,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="buttonBillPress:" destination="1A9-MJ-93K" eventType="touchUpInside" id="uag-os-vFE"/>
+                                    <action selector="buttonBillPressAction:" destination="1A9-MJ-93K" eventType="touchUpInside" id="ETN-3C-vDQ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="qjc-sx-UdA">
@@ -307,7 +307,7 @@
                                                     <constraint firstAttribute="height" constant="31" id="KbT-s1-IzS"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="bookingChange:" destination="1A9-MJ-93K" eventType="valueChanged" id="y4M-fh-hb6"/>
+                                                    <action selector="bookingChangeAction:" destination="1A9-MJ-93K" eventType="valueChanged" id="5qL-Yq-bMQ"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -341,7 +341,7 @@
                                                     <constraint firstAttribute="height" constant="31" id="lLI-1V-9O7"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="prepaymentChange:" destination="1A9-MJ-93K" eventType="valueChanged" id="krB-vA-Mdo"/>
+                                                    <action selector="prepaymentChangeAction:" destination="1A9-MJ-93K" eventType="valueChanged" id="iM0-PG-eAx"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -375,7 +375,7 @@
                                                     <constraint firstAttribute="height" constant="31" id="4ZW-Vt-fFZ"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="vipChange:" destination="1A9-MJ-93K" eventType="valueChanged" id="FAR-Qo-C1S"/>
+                                                    <action selector="vipChangeAction:" destination="1A9-MJ-93K" eventType="valueChanged" id="XZU-2R-LGc"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -398,12 +398,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Cafe Mario" id="fdF-An-uLZ"/>
                     <connections>
-                        <outlet property="booking" destination="Teb-pU-niw" id="G83-NE-8VH"/>
-                        <outlet property="fio" destination="xhJ-ju-K0K" id="ABG-sN-Cbv"/>
-                        <outlet property="numberGuests" destination="Ryr-rZ-mdY" id="5Az-Cq-PKp"/>
-                        <outlet property="numberTable" destination="Cx4-VD-To2" id="qxT-Wg-07s"/>
-                        <outlet property="prepayment" destination="RqQ-Nw-e5h" id="lID-fu-wlB"/>
-                        <outlet property="vip" destination="M8e-f4-qQx" id="aIs-vU-729"/>
+                        <outlet property="bookingSwitch" destination="Teb-pU-niw" id="G83-NE-8VH"/>
+                        <outlet property="fioTextField" destination="xhJ-ju-K0K" id="ABG-sN-Cbv"/>
+                        <outlet property="numberGuestsTextField" destination="Ryr-rZ-mdY" id="5Az-Cq-PKp"/>
+                        <outlet property="numberTableTextField" destination="Cx4-VD-To2" id="qxT-Wg-07s"/>
+                        <outlet property="prepaymentSwitch" destination="RqQ-Nw-e5h" id="lID-fu-wlB"/>
+                        <outlet property="vipSwitch" destination="M8e-f4-qQx" id="aIs-vU-729"/>
                         <segue destination="s7X-uH-Ztw" kind="show" identifier="Check" id="5w2-yp-v0t"/>
                     </connections>
                 </viewController>

@@ -7,22 +7,27 @@
 
 import UIKit
 
-/// BillViewController
+/// BillViewController - экран где отображаются данные по счеты
 class BillViewController: UIViewController {
 
     @IBOutlet weak var result: UILabel!
     
+    var data = Data()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setDataOnUI()
+    }
+    
+    func setDataOnUI() {
         result.textAlignment = .left
-        if let safeFio = DataModel.fio,
-           let safeNumberGuest = DataModel.numberGuest,
-           let safeNumberTable = DataModel.numberTable,
-           let safeEmail = DataModel.email,
-           let safeBooking = DataModel.booking,
-           let safePrepayment = DataModel.prepayment,
-           let safeVip = DataModel.vip {
+        if let safeFio = data.fio,
+           let safeNumberGuest = data.numberGuest,
+           let safeNumberTable = data.numberTable,
+           let safeEmail = data.email,
+           let safeBooking = data.booking,
+           let safePrepayment = data.prepayment,
+           let safeVip = data.vip {
             result.text = """
                 Покупатель:
                 ФИО: \(safeFio),

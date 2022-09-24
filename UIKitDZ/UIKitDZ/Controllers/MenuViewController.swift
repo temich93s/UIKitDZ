@@ -10,54 +10,73 @@ import UIKit
 /// MenuViewController
 class MenuViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var fio: UITextField!
-    @IBOutlet weak var numberGuests: UITextField!
-    @IBOutlet weak var numberTable: UITextField!
+    @IBOutlet weak var fioTextField: UITextField!
+    @IBOutlet weak var numberGuestsTextField: UITextField!
+    @IBOutlet weak var numberTableTextField: UITextField!
     
-    @IBOutlet weak var booking: UISwitch!
-    @IBOutlet weak var prepayment: UISwitch!
-    @IBOutlet weak var vip: UISwitch!
+    @IBOutlet weak var bookingSwitch: UISwitch!
+    @IBOutlet weak var prepaymentSwitch: UISwitch!
+    @IBOutlet weak var vipSwitch: UISwitch!
+    
+    var data = Data()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fio.delegate = self
-        numberGuests.delegate = self
-        numberTable.delegate = self
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        configurationMenuViewController()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "Check",
+            let safeFio = data.fio,
+            let safeNumberGuest = data.numberGuest,
+            let safeNumberTable = data.numberTable,
+            let playerViewController = segue.destination as? BillViewController
+        else {
+            return
+        }
+        playerViewController.data = data
+        print("fio: \(safeFio), numberGuest: \(safeNumberGuest), numberTable: \(safeNumberTable)")
     }
 
-    @IBAction func bookingChange(_ sender: UISwitch) {
-        DataModel.booking?.toggle()
-        if let safeStatus = DataModel.booking {
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+        
+    @IBAction func bookingChangeAction(_ sender: UISwitch) {
+        data.booking?.toggle()
+        if let safeStatus = data.booking {
             print("DataModel.booking: \(safeStatus)")
         }
     }
     
-    @IBAction func prepaymentChange(_ sender: UISwitch) {
-        DataModel.prepayment?.toggle()
-        if let safeStatus = DataModel.prepayment {
+    @IBAction func prepaymentChangeAction(_ sender: UISwitch) {
+        data.prepayment?.toggle()
+        if let safeStatus = data.prepayment {
             print("DataModel.prepayment: \(safeStatus)")
         }
     }
     
-    @IBAction func vipChange(_ sender: UISwitch) {
-        DataModel.vip?.toggle()
-        if let safeStatus = DataModel.vip {
+    @IBAction func vipChangeAction(_ sender: UISwitch) {
+        data.vip?.toggle()
+        if let safeStatus = data.vip {
             print("DataModel.vip: \(safeStatus)")
         }
     }
     
-    @IBAction func buttonBillPress(_ sender: UIButton) {
-        DataModel.fio = fio.text
-        DataModel.numberGuest = numberGuests.text
-        DataModel.numberTable = numberTable.text
-        guard let safeFio = DataModel.fio,
-              let safeNumberGuest = DataModel.numberGuest,
-              let safeNumberTable = DataModel.numberTable else { return }
-        guard !safeFio.isEmpty,
+    @IBAction func buttonBillPressAction(_ sender: UIButton) {
+        data.fio = fioTextField.text
+        data.numberGuest = numberGuestsTextField.text
+        data.numberTable = numberTableTextField.text
+        guard let safeFio = data.fio,
+              let safeNumberGuest = data.numberGuest,
+              let safeNumberTable = data.numberTable,
+              !safeFio.isEmpty,
               let safeNumberTableInt = Int(safeNumberTable),
               let safeNumberGuestInt = Int(safeNumberGuest) else { return }
         let actionController = UIAlertController(
@@ -69,35 +88,26 @@ class MenuViewController: UIViewController, UITextFieldDelegate {
                 """,
             preferredStyle: .alert
         )
-        let actionCancel = UIAlertAction(title: "Cancel", style: .default)
-        let actionBill = UIAlertAction(title: "Чек", style: .default) { _ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        let billAction = UIAlertAction(title: "Чек", style: .default) { _ in
             self.performSegue(withIdentifier: "Check", sender: self)
         }
-        actionController.addAction(actionCancel)
-        actionController.addAction(actionBill)
+        actionController.addAction(cancelAction)
+        actionController.addAction(billAction)
         self.present(actionController, animated: true, completion: nil)
         self.view.endEditing(true)
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    // Спрашивает делегата, следует ли обрабатывать нажатие кнопки Return для текстового поля.
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Приводит к тому, что представление (или одно из его встроенных текстовых полей) отойдет из статуса первого ответчика.
-        self.view.endEditing(true)
-        return true
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.destination is BillViewController {
-            if let safeFio = DataModel.fio,
-                let safeNumberGuest = DataModel.numberGuest,
-                let safeNumberTable = DataModel.numberTable {
-                print("fio: \(safeFio), numberGuest: \(safeNumberGuest), numberTable: \(safeNumberTable)")
-            }
-        }
-    }
+    private func configurationMenuViewController() {
+        fioTextField.delegate = self
+        numberGuestsTextField.delegate = self
+        numberTableTextField.delegate = self
         
+        let tapRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIInputViewController.dismissKeyboard)
+        )
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
 }

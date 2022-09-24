@@ -7,46 +7,61 @@
 
 import UIKit
 
-/// LoginViewController
+/// LoginViewController - экран где производит индентификация и аутентификация пользователя
 class LoginViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var email: UITextField!
-    @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var data = Data()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        email.delegate = self
-        password.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
-    @IBAction func eyeButtonPress(_ sender: UIButton) {
-        password.isSecureTextEntry.toggle()
-    }
-    
-    @IBAction func enterPress(_ sender: UIButton) {
-        DataModel.email = email.text
-        DataModel.password = password.text
-        
-        guard let safeEmail = DataModel.email,
-              let safePassword = DataModel.password else { return }
-        guard !safeEmail.isEmpty, !safePassword.isEmpty else { return }
-        
-        print("DataModel.email: \(safeEmail), DataModel.password: \(safePassword)")
-        performSegue(withIdentifier: "CreateAccount", sender: self)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "CreateAccount",
+            let playerViewController = segue.destination as? MenuViewController
+        else {
+            return
+        }
+        playerViewController.data = data
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 
-    // Спрашивает делегата, следует ли обрабатывать нажатие кнопки Return для текстового поля.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        // Приводит к тому, что представление (или одно из его встроенных текстовых полей) отойдет из статуса первого ответчика.
         self.view.endEditing(true)
         return true
     }
+    
+    @IBAction func eyeButtonPress(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry.toggle()
+    }
+    
+    @IBAction func enterPress(_ sender: UIButton) {
+        data.email = emailTextField.text
+        data.password = passwordTextField.text
+        
+        guard
+            let safeEmail = data.email,
+            let safePassword = data.password
+        else {
+            return
+        }
+        guard !safeEmail.isEmpty, !safePassword.isEmpty else { return }
+        
+        print("DataModel.email: \(safeEmail), DataModel.password: \(safePassword)")
+        performSegue(withIdentifier: "CreateAccount", sender: self)
+    }
+    
 }
