@@ -10,28 +10,28 @@ import UIKit
 /// GameViewController - игра, второй экран
 class GameViewController: UIViewController {
 
-    let gameModel = GameModel()
+    let game = Game()
     
-    var labelResult: UILabel = {
+    var resultLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 100, y: 200, width: 200, height: 80)
-        label.backgroundColor = UIColor.orange
+        label.backgroundColor = .orange
         label.text = "Результат"
         label.textAlignment = .center
         return label
     }()
-    lazy var buttonStartGame: UIButton = {
+    lazy var startGameButton: UIButton = {
         let button = UIButton()
         button.frame = CGRect(x: 100, y: 400, width: 200, height: 80)
-        button.backgroundColor = UIColor.orange
+        button.backgroundColor = .orange
         button.setTitle("Начать игру", for: .normal)
-        button.addTarget(self, action: #selector(buttonStartGameAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startGameAction), for: .touchUpInside)
         return button
     }()
-    var labelEmoji: UILabel = {
+    var emojiLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 100, y: 500, width: 200, height: 80)
-        label.backgroundColor = UIColor.orange
+        label.backgroundColor = .orange
         label.textAlignment = .center
         label.text = "😐"
         return label
@@ -39,26 +39,29 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(labelResult)
-        self.view.addSubview(buttonStartGame)
-        self.view.addSubview(labelEmoji)
+        setUI()
     }
     
-    @objc func buttonStartGameAction() {
+    @objc func startGameAction() {
         let actionController = UIAlertController(
             title: "Словечко",
             message: "Введи кодовое слово",
             preferredStyle: .alert
         )
-        let action = UIAlertAction(title: "ВВОД", style: .default) { _ in
+        let alertAction = UIAlertAction(title: "ВВОД", style: .default) { _ in
             guard let safeText = actionController.textFields?.first?.text else { return }
-            let (resultText, emoji) = self.gameModel.checkWord(safeText)
-            self.labelEmoji.text = emoji
-            self.labelResult.text = resultText
+            let (resultText, emoji) = self.game.checkWord(safeText)
+            self.emojiLabel.text = emoji
+            self.resultLabel.text = resultText
         }
         actionController.addTextField(configurationHandler: nil)
-        actionController.addAction(action)
-        self.present(actionController, animated: true, completion: nil)
+        actionController.addAction(alertAction)
+        present(actionController, animated: true, completion: nil)
     }
     
+    private func setUI() {
+        view.addSubview(resultLabel)
+        view.addSubview(startGameButton)
+        view.addSubview(emojiLabel)
+    }
 }

@@ -8,12 +8,11 @@
 import Foundation
 
 /// GameModel - модель нашего приложения
-struct GameModel {
+struct Game {
     func checkWord(_ currentWord: String) -> (String, String) {
-        if currentWord == "leohl" {
-            return ("Hello", "🤩")
-        } else {
+        guard currentWord == "leohl" else {
             return ("...", "🤐")
         }
+        return ("Hello", "🤩")
     }
 }
