@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		AA21AF9428DB1CC2000D9213 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21AF9328DB1CC2000D9213 /* AppDelegate.swift */; };
 		AA21AF9628DB1CC2000D9213 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21AF9528DB1CC2000D9213 /* SceneDelegate.swift */; };
-		AA21AF9828DB1CC2000D9213 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA21AF9728DB1CC2000D9213 /* ViewController.swift */; };
 		AA21AF9B28DB1CC2000D9213 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA21AF9928DB1CC2000D9213 /* Main.storyboard */; };
 		AA21AF9D28DB1CC3000D9213 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */; };
 		AA21AFA028DB1CC3000D9213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA21AF9E28DB1CC3000D9213 /* LaunchScreen.storyboard */; };
+		AA2D96FD28E2E79F00456D6D /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D96FC28E2E79F00456D6D /* SharingViewController.swift */; };
+		AA2D96FF28E2E7CB00456D6D /* ConspectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2D96FE28E2E7CB00456D6D /* ConspectViewController.swift */; };
+		AA2D970328E3023500456D6D /* Lightwire - Sunset.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AA2D970228E3023500456D6D /* Lightwire - Sunset.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA21AF9028DB1CC2000D9213 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA21AF9328DB1CC2000D9213 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA21AF9528DB1CC2000D9213 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AA21AF9728DB1CC2000D9213 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA21AF9A28DB1CC2000D9213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA21AF9F28DB1CC3000D9213 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA21AFA128DB1CC3000D9213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA2D96FC28E2E79F00456D6D /* SharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
+		AA2D96FE28E2E7CB00456D6D /* ConspectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConspectViewController.swift; sourceTree = "<group>"; };
+		AA2D970228E3023500456D6D /* Lightwire - Sunset.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Lightwire - Sunset.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		AA21AF9228DB1CC2000D9213 /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
+				AA2D970128E3022500456D6D /* Resources */,
+				AA2D96F728E2DFAF00456D6D /* Views */,
+				AA2D96F628E2DFAA00456D6D /* Controllers */,
+				AA2D96F528E2DFA500456D6D /* Models */,
 				AA21AF9328DB1CC2000D9213 /* AppDelegate.swift */,
 				AA21AF9528DB1CC2000D9213 /* SceneDelegate.swift */,
-				AA21AF9728DB1CC2000D9213 /* ViewController.swift */,
-				AA21AF9928DB1CC2000D9213 /* Main.storyboard */,
-				AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */,
 				AA21AF9E28DB1CC3000D9213 /* LaunchScreen.storyboard */,
+				AA21AF9C28DB1CC3000D9213 /* Assets.xcassets */,
 				AA21AFA128DB1CC3000D9213 /* Info.plist */,
 			);
 			path = UIKitDZ;
+			sourceTree = "<group>";
+		};
+		AA2D96F528E2DFA500456D6D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA2D96F628E2DFAA00456D6D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA2D96FC28E2E79F00456D6D /* SharingViewController.swift */,
+				AA2D96FE28E2E7CB00456D6D /* ConspectViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AA2D96F728E2DFAF00456D6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA21AF9928DB1CC2000D9213 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA2D970128E3022500456D6D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA2D970228E3023500456D6D /* Lightwire - Sunset.mp3 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +166,7 @@
 			files = (
 				AA21AFA028DB1CC3000D9213 /* LaunchScreen.storyboard in Resources */,
 				AA21AF9D28DB1CC3000D9213 /* Assets.xcassets in Resources */,
+				AA2D970328E3023500456D6D /* Lightwire - Sunset.mp3 in Resources */,
 				AA21AF9B28DB1CC2000D9213 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,9 +199,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA21AF9828DB1CC2000D9213 /* ViewController.swift in Sources */,
+				AA2D96FF28E2E7CB00456D6D /* ConspectViewController.swift in Sources */,
 				AA21AF9428DB1CC2000D9213 /* AppDelegate.swift in Sources */,
 				AA21AF9628DB1CC2000D9213 /* SceneDelegate.swift in Sources */,
+				AA2D96FD28E2E79F00456D6D /* SharingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
