@@ -13,7 +13,7 @@ class ProductsViewController: UIViewController {
     var chooseProduct = ProductData()
     
     private var productsImageView: UIImageView = {
-        $0.image = UIImage(named: "image1.jpg")
+        $0.image = UIImage(named: "Image1")
         return $0
     }(UIImageView())
     
@@ -47,11 +47,11 @@ class ProductsViewController: UIViewController {
         return $0
     }(UIButton())
     
-    private var productsImageArray = [UIImage(named: "image1.jpg"),
-                              UIImage(named: "image2.jpg"),
-                              UIImage(named: "image3.jpg"),
-                              UIImage(named: "image4.jpg"),
-                              UIImage(named: "image5.jpg")]
+    private var productsImageArray = [UIImage(named: "Image1"),
+                              UIImage(named: "image2"),
+                              UIImage(named: "Image3"),
+                              UIImage(named: "Image4"),
+                              UIImage(named: "Image5")]
     private var productsNameArray = ["'HIG'", "'BAP'", "'JUT'", "'PEL'", "'HOK'"]
     
     override func viewDidLoad() {
