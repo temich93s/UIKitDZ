@@ -19,7 +19,7 @@ class ProductsViewController: UIViewController {
     
     private lazy var productsSegmentedControl: UISegmentedControl = {
         $0.selectedSegmentIndex = 0
-        $0.addTarget(self, action: #selector(setProductsImage(target:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(setProductsImageAction(target:)), for: .valueChanged)
         return $0
     }(UISegmentedControl(items: productsNameArray))
     
@@ -29,7 +29,7 @@ class ProductsViewController: UIViewController {
         $0.value = 49
         $0.thumbTintColor = .systemPurple
         $0.minimumTrackTintColor = .systemPurple
-        $0.addTarget(self, action: #selector(setSizeProducts(target:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(setSizeProductsAction(target:)), for: .valueChanged)
         return $0
     }(UISlider())
     
@@ -59,14 +59,14 @@ class ProductsViewController: UIViewController {
         setUI()
     }
     
-    @objc func setProductsImage(target: UISegmentedControl) {
+    @objc func setProductsImageAction(target: UISegmentedControl) {
         guard target == productsSegmentedControl else { return }
         let segmentIndex = target.selectedSegmentIndex
         chooseProduct.productsName = productsNameArray[segmentIndex]
         productsImageView.image = productsImageArray[segmentIndex]
     }
     
-    @objc func setSizeProducts(target: UISlider) {
+    @objc func setSizeProductsAction(target: UISlider) {
         guard target == sizeProductsSlider else { return }
         let segmentIndex = Int(target.value)
         chooseProduct.sizeProduct = segmentIndex
@@ -85,7 +85,7 @@ class ProductsViewController: UIViewController {
     
     private func setUI() {
         view.backgroundColor = .white
-        
+
         view.addSubview(productsImageView)
         view.addSubview(productsSegmentedControl)
         view.addSubview(sizeProductsSlider)

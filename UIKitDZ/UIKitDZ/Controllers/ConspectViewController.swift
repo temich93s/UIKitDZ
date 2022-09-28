@@ -29,10 +29,10 @@ class ConspectViewController: UIViewController {
         segmentControll = UISegmentedControl(items: menuArray)
         segmentControll.frame = CGRect(x: 100, y: 600, width: 200, height: 30)
         view.addSubview(segmentControll)
-        segmentControll.addTarget(self, action: #selector(selectedValue), for: .valueChanged)
+        segmentControll.addTarget(self, action: #selector(selectedValueAction), for: .valueChanged)
     }
     
-    @objc func selectedValue(target: UISegmentedControl) {
+    @objc func selectedValueAction(target: UISegmentedControl) {
         if target == segmentControll {
             let segmentIndex = target.selectedSegmentIndex
             imageView.image = imageArray[segmentIndex]
