@@ -30,13 +30,13 @@ class PlayerViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setAudioPlayer()
         setUI()
     }
     
-    @IBAction func playStopButtonPress(_ sender: UIButton) {
+    @IBAction func playStopButtonPressAction(_ sender: UIButton) {
         let config = UIImage.SymbolConfiguration(pointSize: 60, weight: .medium, scale: .default)
-        print(audioPlayer.isPlaying)
         if audioPlayer.isPlaying {
             playStopButton.setImage(UIImage(systemName: "play.fill", withConfiguration: config), for: .normal)
             audioPlayer.pause()
@@ -48,7 +48,7 @@ class PlayerViewController: UIViewController {
         }
     }
     
-    @IBAction func closeButtonPress(_ sender: UIButton) {
+    @IBAction func closeButtonPressAction(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
     

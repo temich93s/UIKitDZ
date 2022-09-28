@@ -30,6 +30,7 @@ class PlistViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setUI()
     }
     
@@ -39,7 +40,7 @@ class PlistViewController: UIViewController {
         playerViewController.currentMusic = currentMusic
     }
     
-    @IBAction func musicNameButtonPress(_ sender: UIButton) {
+    @IBAction func musicNameButtonPressAction(_ sender: UIButton) {
         guard let safeID = Int(sender.restorationIdentifier ?? "") else { return }
         currentMusic = MusicPlist().musicPlistArray[safeID]
         performSegue(withIdentifier: "Player", sender: self)

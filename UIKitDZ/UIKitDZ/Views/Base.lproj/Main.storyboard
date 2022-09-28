@@ -54,7 +54,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="musicNameButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yPp-N0-T6e"/>
+                                                    <action selector="musicNameButtonPressAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XwF-8Q-gQP"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqP-J3-7aF">
@@ -96,7 +96,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="musicNameButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aAz-gB-V4C"/>
+                                                    <action selector="musicNameButtonPressAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3T9-Rl-6c9"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOh-B8-6t4">
@@ -138,7 +138,7 @@
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="musicNameButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vmj-nh-LTa"/>
+                                                    <action selector="musicNameButtonPressAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7xl-YF-eF7"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:18" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc1-WS-shm">
@@ -216,7 +216,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="closeButtonPress:" destination="NYg-9S-Typ" eventType="touchUpInside" id="zaf-S6-zrl"/>
+                                                    <action selector="closeButtonPressAction:" destination="NYg-9S-Typ" eventType="touchUpInside" id="DJC-fI-mSN"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0jq-2v-zra">
@@ -359,7 +359,7 @@
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="60"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <action selector="playStopButtonPress:" destination="NYg-9S-Typ" eventType="touchUpInside" id="F6b-p8-GAK"/>
+                                                    <action selector="playStopButtonPressAction:" destination="NYg-9S-Typ" eventType="touchUpInside" id="wpc-Cd-XtI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGY-g5-tyJ">
