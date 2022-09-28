@@ -84,6 +84,7 @@ class SharingViewController: UIViewController {
     }
 }
 
+/// SharingViewController: UIPickerViewDelegate - устанавливаем ячейку для UIPickerView и действие когда ячейка выбрана
 extension SharingViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView,
@@ -125,6 +126,7 @@ extension SharingViewController: UIPickerViewDelegate {
 
 }
 
+/// SharingViewController: UIPickerViewDelegate - устанавливаем количество компонентов и строк для UIPickerView
 extension SharingViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -137,6 +139,7 @@ extension SharingViewController: UIPickerViewDataSource {
     
 }
 
+/// SharingViewController: UIPickerViewDelegate - скрываем клавиатуру при нажатии return
 extension SharingViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         shareMessageTextField.resignFirstResponder()
