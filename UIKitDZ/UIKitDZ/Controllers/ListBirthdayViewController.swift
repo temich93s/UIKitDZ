@@ -43,12 +43,6 @@ class ListBirthdayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        for indexCurrentPerson in 0..<birthdayDataArray.count {
-            addProfile(name: birthdayDataArray[indexCurrentPerson].name,
-                       description: birthdayDataArray[indexCurrentPerson].description,
-                       countDays: birthdayDataArray[indexCurrentPerson].countDays,
-                       position: indexCurrentPerson)
-        }
     }
 
     @objc func backToLoginAction() {
@@ -62,6 +56,15 @@ class ListBirthdayViewController: UIViewController {
         profilePersonVC.modalPresentationStyle = .formSheet
         profilePersonVC.birthdayDataArray = birthdayDataArray
         present(profilePersonVC, animated: true)
+    }
+    
+    func setProfile() {
+        for indexCurrentPerson in 0..<birthdayDataArray.count {
+            addProfile(name: birthdayDataArray[indexCurrentPerson].name,
+                       description: birthdayDataArray[indexCurrentPerson].description,
+                       countDays: birthdayDataArray[indexCurrentPerson].countDays,
+                       position: indexCurrentPerson)
+        }
     }
     
     func addProfile(name: String, description: String, countDays: String, position: Int) {
@@ -107,6 +110,7 @@ class ListBirthdayViewController: UIViewController {
     }
     
     private func setUI() {
+        setProfile()
         view.backgroundColor = .white
         view.addSubview(logoLabel)
         view.addSubview(backButton)

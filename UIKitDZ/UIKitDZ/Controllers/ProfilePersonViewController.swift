@@ -62,7 +62,7 @@ class ProfilePersonViewController: UIViewController, UITextFieldDelegate {
     
     private lazy var setBirthdayPersonPickerView: UIDatePicker = {
         $0.datePickerMode = .date
-        $0.addTarget(self, action: #selector(setBirthdayPerson(picker:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(setBirthdayPersonAction(picker:)), for: .valueChanged)
         return $0
     }(UIDatePicker())
     
@@ -95,7 +95,7 @@ class ProfilePersonViewController: UIViewController, UITextFieldDelegate {
         $0.setTitle("Добавить", for: .normal)
         $0.setTitleColor(.gray, for: .normal)
         $0.contentHorizontalAlignment = .left
-        $0.addTarget(self, action: #selector(addInstagramIdPerson), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(addInstagramIdPersonAction), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -117,12 +117,11 @@ class ProfilePersonViewController: UIViewController, UITextFieldDelegate {
         present(listBirthdayVC, animated: true)
     }
     
-    @objc func setBirthdayPerson(picker: UIDatePicker) {
+    @objc func setBirthdayPersonAction(picker: UIDatePicker) {
         guard picker.isEqual(self.setBirthdayPersonPickerView) else { return }
-        print("picker: \(picker.date)")
     }
     
-    @objc func addInstagramIdPerson() {
+    @objc func addInstagramIdPersonAction() {
         let alertController = UIAlertController(title: "",
                                                 message: "Введите username Instagram",
                                                 preferredStyle: .alert)
@@ -141,30 +140,32 @@ class ProfilePersonViewController: UIViewController, UITextFieldDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
-    @objc func dismissKeyboard() {
+    @objc func dismissKeyboardAction() {
         view.endEditing(true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
+        setDelegateAndDataSource()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+    
+    private func setDelegateAndDataSource() {
         setAgePersonPickerView.dataSource = self
         setAgePersonPickerView.delegate = self
         setSexPersonPickerView.dataSource = self
         setSexPersonPickerView.delegate = self
-        
         namePersonTextField.delegate = self
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
     }
     
     private func setUI() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
+        view.addGestureRecognizer(tap)
         view.backgroundColor = .white
         view.addSubview(backButton)
         view.addSubview(addPersonButton)
@@ -198,6 +199,7 @@ class ProfilePersonViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+/// ProfilePersonViewController: UIPickerViewDataSource - подписываем под протокол UIPickerViewDataSource для настройки количества компонентов и строк UIPickerView
 extension ProfilePersonViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -216,6 +218,7 @@ extension ProfilePersonViewController: UIPickerViewDataSource {
     
 }
 
+/// ProfilePersonViewController: UIPickerViewDataSource - подписываем под протокол UIPickerViewDataSource для настройки содержимого UIPickerView и обработки выбранного пункта UIPickerView
 extension ProfilePersonViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {

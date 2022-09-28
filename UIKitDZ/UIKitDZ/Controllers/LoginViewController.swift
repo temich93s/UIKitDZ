@@ -64,35 +64,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         $0.backgroundColor = .blue
         $0.setTitle("Войти", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.addTarget(self, action: #selector(enterAccount), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(enterAccountAction), for: .touchUpInside)
         return $0
     }(UIButton())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+        setDelegate()
     }
     
-    @objc private func enterAccount() {
+    @objc private func enterAccountAction() {
         let listBirthdayVC = ListBirthdayViewController()
         listBirthdayVC.modalPresentationStyle = .fullScreen
         present(listBirthdayVC, animated: true)
     }
     
-    @objc func dismissKeyboard() {
+    @objc func dismissKeyboardAction() {
         view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return true
     }
     
+    private func setDelegate() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
     private func setUI() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
+        view.addGestureRecognizer(tap)
         view.backgroundColor = .white
         view.addSubview(logoLabel)
         view.addSubview(signInLabel)
