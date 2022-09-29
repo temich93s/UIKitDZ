@@ -10,12 +10,10 @@ import UIKit
 /// DeliveryViewController - экран с указанием данных о доставки
 class DeliveryViewController: UIViewController, UITextFieldDelegate {
     
-    var buyerData = BuyerData()
-    
     private lazy var backButton: UIButton = {
         $0.setTitle("Отмена", for: .normal)
         $0.setTitleColor(.systemPurple, for: .normal)
-        $0.addTarget(self, action: #selector(backToProductsVC(target:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(backToProductsVCAction(target:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -75,39 +73,37 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate {
     
     private lazy var deliveryByCourierSwitch: UISwitch = {
         $0.onTintColor = .systemPurple
-        $0.addTarget(self, action: #selector(deliveryByCourierStatusChange(target:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(deliveryByCourierStatusChangeAction(target:)), for: .touchUpInside)
         return $0
     }(UISwitch())
     
     private lazy var makePaymentButton: UIButton = {
         $0.setTitle("Оплатить", for: .normal)
         $0.backgroundColor = .systemPurple
-        $0.addTarget(self, action: #selector(goToPaymentVC(target:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(goToPaymentVCAction(target:)), for: .touchUpInside)
         return $0
     }(UIButton())
+    
+    var buyerData = BuyerData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        
-        fioBuyerTextField.delegate = self
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
     }
     
-    @objc func deliveryByCourierStatusChange(target: UISwitch) {
+    @objc func deliveryByCourierStatusChangeAction(target: UISwitch) {
         guard target.isEqual(deliveryByCourierSwitch) else { return }
         buyerData.deliveryByCourier = target.isOn
     }
     
-    @objc func backToProductsVC(target: UIButton) {
+    @objc func backToProductsVCAction(target: UIButton) {
         guard target.isEqual(backButton) else { return }
         let productsVC = ProductsViewController()
         productsVC.modalPresentationStyle = .fullScreen
         present(productsVC, animated: true)
     }
     
-    @objc func goToPaymentVC(target: UIButton) {
+    @objc func goToPaymentVCAction(target: UIButton) {
         guard target.isEqual(makePaymentButton) else { return }
         guard
             let fioBuyer = fioBuyerTextField.text,
@@ -138,16 +134,20 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate {
         present(alertController, animated: true)
     }
     
-    @objc func dismissKeyboard() {
+    @objc func dismissKeyboardAction() {
         view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return true
     }
     
     private func setUI() {
+        fioBuyerTextField.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
+        view.addGestureRecognizer(tap)
+        
         view.backgroundColor = .white
         view.addSubview(backButton)
         view.addSubview(dataForDeliveryLabel)

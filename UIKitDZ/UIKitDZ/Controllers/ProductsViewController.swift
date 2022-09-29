@@ -10,8 +10,6 @@ import UIKit
 /// ProductsViewController - экран с товарами
 class ProductsViewController: UIViewController {
 
-    var chooseProduct = ProductData()
-    
     private var productsImageView: UIImageView = {
         $0.image = UIImage(named: "Image1")
         return $0
@@ -43,7 +41,7 @@ class ProductsViewController: UIViewController {
     private lazy var makePurchaseButton: UIButton = {
         $0.setTitle("Оформить покупку", for: .normal)
         $0.backgroundColor = .systemPurple
-        $0.addTarget(self, action: #selector(goToDeliveryVC(target:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(goToDeliveryVCAction(target:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -53,6 +51,8 @@ class ProductsViewController: UIViewController {
                               UIImage(named: "Image4"),
                               UIImage(named: "Image5")]
     private var productsNameArray = ["'HIG'", "'BAP'", "'JUT'", "'PEL'", "'HOK'"]
+    
+    var chooseProduct = ProductData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +73,7 @@ class ProductsViewController: UIViewController {
         sizeProductsLabeL.text = "\(segmentIndex)"
     }
     
-    @objc func goToDeliveryVC(target: UIButton) {
+    @objc func goToDeliveryVCAction(target: UIButton) {
         guard target == makePurchaseButton else { return }
         let deliveryVC = DeliveryViewController()
         deliveryVC.modalPresentationStyle = .fullScreen

@@ -10,12 +10,10 @@ import UIKit
 /// PaymentViewController - Экран оплаты покупки
 class PaymentViewController: UIViewController {
 
-    var buyerData = BuyerData()
-    
     private lazy var backButton: UIButton = {
         $0.setTitle("Отмена", for: .normal)
         $0.setTitleColor(.systemPurple, for: .normal)
-        $0.addTarget(self, action: #selector(goToDeliveryVC(target:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(goToDeliveryVCAction(target:)), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -65,18 +63,20 @@ class PaymentViewController: UIViewController {
     private lazy var makePaymentButton: UIButton = {
         $0.setTitle("Оплатить", for: .normal)
         $0.backgroundColor = .systemPurple
-        $0.addTarget(self, action: #selector(makePaymentVC(target:)), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(makePaymentVCAction(target:)), for: .touchUpInside)
         return $0
     }(UIButton())
+    
+    var buyerData = BuyerData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
     
-    @objc func makePaymentVC(target: UIButton) {
-        guard target.isEqual(makePaymentButton) else { return }
+    @objc func makePaymentVCAction(target: UIButton) {
         guard
+            target.isEqual(makePaymentButton),
             deliveryByCourierSwitch.isOn
         else {
             let alertController = UIAlertController(
@@ -99,7 +99,7 @@ class PaymentViewController: UIViewController {
         present(alertController, animated: true)
     }
     
-    @objc func goToDeliveryVC(target: UIButton) {
+    @objc func goToDeliveryVCAction(target: UIButton) {
         guard target == backButton else { return }
         let deliveryVC = DeliveryViewController()
         deliveryVC.modalPresentationStyle = .fullScreen
