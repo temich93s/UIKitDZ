@@ -23,7 +23,7 @@ class SharingViewController: UIViewController {
         setUI()
     }
     
-    @objc func dismissKeyboard() {
+    @objc func dismissKeyboardAction() {
         view.endEditing(true)
     }
     
@@ -48,7 +48,7 @@ class SharingViewController: UIViewController {
         chosenPhotoSegmentedControl.selectedSegmentIndex = 0
         shareMessageButton.layer.cornerRadius = shareMessageButton.frame.height / 2
         shareMelodyButton.layer.cornerRadius = shareMessageButton.frame.height / 2
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardAction))
         view.addGestureRecognizer(tap)
     }
     
@@ -78,6 +78,7 @@ class SharingViewController: UIViewController {
         }
         startItemSharing(item: safeMessage)
     }
+    
     @IBAction func shareMelodyButtonAction(_ sender: UIButton) {
         guard let url = Bundle.main.url(forResource: "Lightwire - Sunset", withExtension: "mp3") else { return }
         startItemSharing(item: url)
