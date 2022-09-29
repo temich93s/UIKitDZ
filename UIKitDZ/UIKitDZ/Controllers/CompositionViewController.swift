@@ -8,9 +8,7 @@
 import UIKit
 
 /// CompositionViewController: экран с БЖУ и составом пиццы
-class CompositionViewController: UIViewController {
-
-    var currentPizza = DataPizza()
+final class CompositionViewController: UIViewController {
     
     private lazy var compositionPizzaLabel: UILabel = {
         $0.font = UIFont(name: "Verdana", size: 25)
@@ -31,6 +29,8 @@ class CompositionViewController: UIViewController {
         $0.textColor = .black
         return $0
     }(UILabel())
+    
+    var currentPizza = DataPizza()
     
     override func viewDidLoad() {
         super.viewDidLoad()

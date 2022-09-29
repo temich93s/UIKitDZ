@@ -8,7 +8,7 @@
 import UIKit
 
 // LoginViewController: экран авторизации
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     private let logoImageView: UIImageView = {
         $0.contentMode = .scaleAspectFill
@@ -66,7 +66,9 @@ class LoginViewController: UIViewController {
     
     @objc private func enterButtonAction() {
         let foodViewController = FoodViewController()
-        navigationController?.pushViewController(foodViewController, animated: false)
+        let navigationController = UINavigationController(rootViewController: foodViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true)
     }
     
     private func setDelegateAndDataSource() {
@@ -94,7 +96,6 @@ class LoginViewController: UIViewController {
         view.addSubview(passwordTextField)
         view.addSubview(enterButton)
     }
-
 }
 
 /// UITextFieldDelegate: закрываем клавиатуру по нажатию Return

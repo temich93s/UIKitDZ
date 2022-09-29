@@ -8,7 +8,7 @@
 import UIKit
 
 /// PizzaViewController: экран со списком пицц
-class PizzaViewController: UIViewController {
+final class PizzaViewController: UIViewController {
     
     var pizzaArray: [DataPizza] = [
         DataPizza(namePizza: "Маргарита",
@@ -95,7 +95,6 @@ class PizzaViewController: UIViewController {
         ingredientsPizzaViewController.modalPresentationStyle = .formSheet
         ingredientsPizzaViewController.currentPizza = pizzaArray[target.tag]
         present(ingredientsPizzaViewController, animated: true)
-
     }
     
 }

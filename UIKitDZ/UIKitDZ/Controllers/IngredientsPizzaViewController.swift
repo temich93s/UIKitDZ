@@ -7,10 +7,13 @@
 
 import UIKit
 
+/// через protocol
+protocol PopToRootDelegate: AnyObject {
+    func goToBack()
+}
+
 /// IngredientsPizzaViewController: Экран с выбором ингридиентов для пиццы
-class IngredientsPizzaViewController: UIViewController {
-    
-    var currentPizza = DataPizza()
+final class IngredientsPizzaViewController: UIViewController {
     
     private lazy var namePizzaLabel: UILabel = {
         $0.text = currentPizza.namePizza
@@ -43,6 +46,8 @@ class IngredientsPizzaViewController: UIViewController {
         $0.addTarget(self, action: #selector(choseButtonAction), for: .touchUpInside)
         return $0
     }(UIButton())
+    
+    var currentPizza = DataPizza()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +92,7 @@ class IngredientsPizzaViewController: UIViewController {
         lazy var availabilityIngredientSwitch: UISwitch = {
             $0.setOn(availabilityIngredient, animated: false)
             $0.tag = numberLine
-            $0.addTarget(self, action: #selector(changeAvailabilityIngredient(target:)), for: .valueChanged)
+            $0.addTarget(self, action: #selector(changeAvailabilityIngredientAction(target:)), for: .valueChanged)
             return $0
         }(UISwitch())
         
@@ -99,13 +104,17 @@ class IngredientsPizzaViewController: UIViewController {
     
     @objc private func choseButtonAction() {
         let billViewController = BillViewController()
+        // через делегаты
+        billViewController.delegate = self
+        // через замыкание
+        billViewController.goToBackTwo = goToBackClosure
         billViewController.currentPizza = currentPizza
         let navigationControllerTwo = UINavigationController(rootViewController: billViewController)
         navigationControllerTwo.modalPresentationStyle = .fullScreen
         present(navigationControllerTwo, animated: true)
     }
     
-    @objc private func changeAvailabilityIngredient(target: UISwitch) {
+    @objc private func changeAvailabilityIngredientAction(target: UISwitch) {
         currentPizza.ingredientsPizza[target.tag].availabilityIngredient = target.isOn
         print(currentPizza.ingredientsPizza)
     }
@@ -115,5 +124,25 @@ class IngredientsPizzaViewController: UIViewController {
         compositionViewController.currentPizza = currentPizza
         compositionViewController.modalPresentationStyle = .pageSheet
         present(compositionViewController, animated: true)
+    }
+    
+    // через замыкание
+    lazy var goToBackClosure = {
+        if let billViewController = self.presentingViewController as? UINavigationController {
+            self.view.isHidden = true
+            self.dismiss(animated: false)
+            billViewController.popToRootViewController(animated: false)
+        }
+    }
+}
+
+/// Подписываем IngredientsPizzaViewController под PopToRootDelegate для возможности очистки экранов с памяти
+extension IngredientsPizzaViewController: PopToRootDelegate {
+    func goToBack() {
+        if let billViewController = self.presentingViewController as? UINavigationController {
+            view.isHidden = true
+            dismiss(animated: false)
+            billViewController.popToRootViewController(animated: false)
+        }
     }
 }

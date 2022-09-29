@@ -11,8 +11,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var navigationController = UINavigationController()
-    var navigationControllerTwo = UINavigationController()
     
     func scene(
         _ scene: UIScene,
@@ -20,10 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         let loginViewController = LoginViewController()
-        let foodViewController = FoodViewController()
-        navigationController = UINavigationController(rootViewController: loginViewController)
-        navigationControllerTwo = UINavigationController(rootViewController: foodViewController)
-        window?.rootViewController = navigationController
+        window?.rootViewController = loginViewController
         window?.backgroundColor = UIColor.white
     }
 }

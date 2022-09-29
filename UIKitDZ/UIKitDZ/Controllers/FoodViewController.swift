@@ -8,9 +8,7 @@
 import UIKit
 
 /// FoodViewController: Экран со списком еды
-class FoodViewController: UIViewController {
-
-    var dataFeedback: [String] = []
+final class FoodViewController: UIViewController {
     
     private lazy var pizzaButton: UIButton = {
         $0.setTitle("Пицца", for: .normal)
@@ -42,6 +40,8 @@ class FoodViewController: UIViewController {
         return $0
     }(UIButton())
     
+    var dataFeedback: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -68,7 +68,6 @@ class FoodViewController: UIViewController {
         }
         alertController.addAction(alertOkAction)
         alertController.addAction(alertSendAction)
-        
         present(alertController, animated: true)
     }
     
@@ -89,7 +88,6 @@ class FoodViewController: UIViewController {
         sushiButton.center.x = view.center.x
         feedbackButton.frame = CGRect(x: 0, y: view.bounds.height - 150, width: 350, height: 50)
         feedbackButton.center.x = view.center.x
-        
     }
     
 }

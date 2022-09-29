@@ -8,11 +8,7 @@
 import UIKit
 
 /// BillViewController: Экран оплаты заказа
-class BillViewController: UIViewController {
-    
-    var currentPizza = DataPizza()
-    var availableCash = false
-    var availableOnline = false
+final class BillViewController: UIViewController {
     
     private lazy var descriptionOrederLabel: UILabel = {
         $0.font = UIFont(name: "Verdana", size: 28)
@@ -34,10 +30,10 @@ class BillViewController: UIViewController {
         return $0
     }(UILabel())
     
-    lazy var paymentInCashSwitch: UISwitch = {
+    private lazy var paymentInCashSwitch: UISwitch = {
         $0.setOn(false, animated: false)
         $0.tag = 0
-        $0.addTarget(self, action: #selector(changePayment(target:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(changePaymentAction(target:)), for: .valueChanged)
         return $0
     }(UISwitch())
     
@@ -49,10 +45,10 @@ class BillViewController: UIViewController {
         return $0
     }(UILabel())
     
-    lazy var paymentOnlineSwitch: UISwitch = {
+    private lazy var paymentOnlineSwitch: UISwitch = {
         $0.setOn(false, animated: false)
         $0.tag = 1
-        $0.addTarget(self, action: #selector(changePayment(target:)), for: .valueChanged)
+        $0.addTarget(self, action: #selector(changePaymentAction(target:)), for: .valueChanged)
         return $0
     }(UISwitch())
     
@@ -65,12 +61,20 @@ class BillViewController: UIViewController {
         return $0
     }(UIButton())
     
+    var currentPizza = DataPizza()
+    var availableCash = false
+    var availableOnline = false
+    // через делегаты
+    weak var delegate: PopToRootDelegate?
+    // через замыкание
+    var goToBackTwo: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
 
-    @objc private func changePayment(target: UISwitch) {
+    @objc private func changePaymentAction(target: UISwitch) {
         switch target.tag {
         case 0:
             availableCash.toggle()
@@ -88,8 +92,11 @@ class BillViewController: UIViewController {
                 message: "Ваш заказ принят в течении 15 минут! \nПриятного аппетита",
                 preferredStyle: .alert)
             let actionAlert = UIAlertAction(title: "ОК", style: .default) { _ in
-                let foodViewController = FoodViewController()
-                self.navigationController?.pushViewController(foodViewController, animated: true)
+                self.dismiss(animated: false)
+                // через замыкание
+                self.goToBackTwo?()
+                // через протокол
+                // self.delegate?.goToBack()
             }
             alertController.addAction(actionAlert)
             present(alertController, animated: true)
