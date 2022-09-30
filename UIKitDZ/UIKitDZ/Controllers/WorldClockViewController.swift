@@ -8,7 +8,7 @@
 import UIKit
 
 /// Экран мирового время
-class WorldClockViewController: UIViewController {
+final class WorldClockViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

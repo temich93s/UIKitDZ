@@ -8,7 +8,7 @@
 import UIKit
 
 /// Экран секундомера
-class StopwatchViewController: UIViewController {
+final class StopwatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

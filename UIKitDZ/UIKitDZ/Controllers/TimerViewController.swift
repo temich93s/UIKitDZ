@@ -9,7 +9,7 @@ import AVFoundation
 import UIKit
 
 /// Экран таймера
-class TimerViewController: UIViewController {
+final class TimerViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!

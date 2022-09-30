@@ -8,7 +8,7 @@
 import UIKit
 
 /// Экран будильника
-class AlarmClockViewController: UIViewController {
+final class AlarmClockViewController: UIViewController {
 
     @IBOutlet weak var setAlarmClock: UIButton!
     @IBOutlet weak var firstAlarmSwitch: UISwitch!
