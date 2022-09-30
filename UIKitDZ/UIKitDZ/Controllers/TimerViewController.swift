@@ -20,7 +20,7 @@ class TimerViewController: UIViewController {
     private var currentHoursTimer = 0
     private var timer = Timer()
     private var finishTimerTime = 0
-    var timerPlayer: AVAudioPlayer!
+    private var timerPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,27 +28,12 @@ class TimerViewController: UIViewController {
         setDataSourceAndDelegate()
     }
     
-    func setDataSourceAndDelegate() {
-        timePickerView.dataSource = self
-        timePickerView.delegate = self
-    }
-    
-    func setUI() {
-        startButton.layer.cornerRadius = startButton.bounds.height / 2
-        startButton.layer.borderWidth = 2
-        startButton.layer.borderColor = CGColor(red: 0, green: 255, blue: 0, alpha: 0.5)
-        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
-        cancelButton.layer.borderWidth = 2
-        cancelButton.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 0.5)
-        timePickerView.tintColor = .white
-        
-    }
-    
     @IBAction func startButtonAction(_ sender: UIButton) {
         guard !(currentHoursTimer == 0 && currentMinutesTimer == 0 && currentSecondsTimer == 0)
         else {
             return
         }
+        startButton.isEnabled = false
         finishTimerTime = Int(Date.timeIntervalSinceReferenceDate) +
             (currentHoursTimer * 60 * 60) +
             (currentMinutesTimer * 60) +
@@ -63,6 +48,7 @@ class TimerViewController: UIViewController {
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         timePickerView.isUserInteractionEnabled = true
+        startButton.isEnabled = true
         timer.invalidate()
         currentSecondsTimer = 0
         currentMinutesTimer = 0
@@ -70,6 +56,25 @@ class TimerViewController: UIViewController {
         for number in 0..<timePickerView.numberOfComponents {
             timePickerView.selectRow(0, inComponent: number, animated: true)
         }
+    }
+    
+    private func setDataSourceAndDelegate() {
+        timePickerView.dataSource = self
+        timePickerView.delegate = self
+    }
+    
+    private func setUI() {
+        startButton.layer.cornerRadius = startButton.bounds.height / 2
+        startButton.layer.borderWidth = 2
+        startButton.layer.borderColor = CGColor(red: 0, green: 255, blue: 0, alpha: 0.5)
+        cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
+        cancelButton.layer.borderWidth = 2
+        cancelButton.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        timePickerView.tintColor = .white
+        startButton.setTitle("Старт", for: .disabled)
+        startButton.setTitleColor(.lightGray, for: .disabled)
+        startButton.setTitle("Старт", for: .normal)
+        startButton.setTitleColor(.white, for: .normal)
     }
     
     @objc private func fireTimer() {
@@ -84,14 +89,13 @@ class TimerViewController: UIViewController {
         } else if currentSecondsTimer > 0 {
             currentSecondsTimer -= 1
         }
-        print(currentHoursTimer, currentMinutesTimer, currentSecondsTimer)
         timePickerView.selectRow(currentSecondsTimer, inComponent: 2, animated: true)
         timePickerView.selectRow(currentMinutesTimer, inComponent: 1, animated: true)
         timePickerView.selectRow(currentHoursTimer, inComponent: 0, animated: true)
-        print("\(finishTimerTime - Int(Date.timeIntervalSinceReferenceDate))")
         guard
             Int(Date.timeIntervalSinceReferenceDate) < finishTimerTime
         else {
+            startButton.isEnabled = true
             timePickerView.isUserInteractionEnabled = true
             timer.invalidate()
             guard let urlSound = Bundle.main.url(forResource: "Alarm", withExtension: "mp3") else { return }
