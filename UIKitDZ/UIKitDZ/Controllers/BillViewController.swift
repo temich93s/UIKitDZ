@@ -7,14 +7,14 @@
 
 import UIKit
 
-/// BillViewController: Экран оплаты заказа
+/// Экран оплаты заказа
 final class BillViewController: UIViewController {
     
     private lazy var descriptionOrederLabel: UILabel = {
         $0.font = UIFont(name: "Verdana", size: 28)
         $0.text = """
             Ваш заказ:
-            1. Пицца "\(currentPizza.namePizza)"
+            1. Пицца "\(currentPizza.pizzaName)"
             """
         $0.numberOfLines = 0
         $0.textAlignment = .left
@@ -62,12 +62,10 @@ final class BillViewController: UIViewController {
     }(UIButton())
     
     var currentPizza = DataPizza()
-    var availableCash = false
-    var availableOnline = false
-    // через делегаты
+    var isAvailableCash = false
+    var isAvailableOnline = false
     weak var delegate: PopToRootDelegate?
-    // через замыкание
-    var goToBackTwo: (() -> ())?
+    var goToBackTwoHandler: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,16 +75,16 @@ final class BillViewController: UIViewController {
     @objc private func changePaymentAction(target: UISwitch) {
         switch target.tag {
         case 0:
-            availableCash.toggle()
+            isAvailableCash.toggle()
         case 1:
-            availableOnline.toggle()
+            isAvailableOnline.toggle()
         default:
             break
         }
     }
     
     @objc private func payButtonAction() {
-        guard !availableCash && !availableOnline else {
+        guard !isAvailableCash && !isAvailableOnline else {
             let alertController = UIAlertController(
                 title: "Заказ оплачен!",
                 message: "Ваш заказ принят в течении 15 минут! \nПриятного аппетита",
@@ -94,7 +92,7 @@ final class BillViewController: UIViewController {
             let actionAlert = UIAlertAction(title: "ОК", style: .default) { _ in
                 self.dismiss(animated: false)
                 // через замыкание
-                self.goToBackTwo?()
+                self.goToBackTwoHandler?()
                 // через протокол
                 // self.delegate?.goToBack()
             }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-// LoginViewController: экран авторизации
+/// Экран авторизации
 final class LoginViewController: UIViewController {
 
     private let logoImageView: UIImageView = {
@@ -98,7 +98,7 @@ final class LoginViewController: UIViewController {
     }
 }
 
-/// UITextFieldDelegate: закрываем клавиатуру по нажатию Return
+/// Закрываем клавиатуру по нажатию Return
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

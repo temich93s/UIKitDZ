@@ -7,13 +7,13 @@
 
 import UIKit
 
-/// CompositionViewController: экран с БЖУ и составом пиццы
+/// Экран с БЖУ и составом пиццы
 final class CompositionViewController: UIViewController {
     
     private lazy var compositionPizzaLabel: UILabel = {
         $0.font = UIFont(name: "Verdana", size: 25)
         $0.text = """
-            Пицца "\(currentPizza.namePizza)"
+            Пицца "\(currentPizza.pizzaName)"
             
             Состав:
             \(currentPizza.compositionPizza)

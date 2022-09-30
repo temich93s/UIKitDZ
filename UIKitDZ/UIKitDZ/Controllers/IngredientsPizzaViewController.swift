@@ -7,16 +7,16 @@
 
 import UIKit
 
-/// через protocol
+/// Протокол для возможности очистки экранов с памяти и возврата на корневой VC
 protocol PopToRootDelegate: AnyObject {
     func goToBack()
 }
 
-/// IngredientsPizzaViewController: Экран с выбором ингридиентов для пиццы
+/// Экран с выбором ингридиентов для пиццы
 final class IngredientsPizzaViewController: UIViewController {
     
     private lazy var namePizzaLabel: UILabel = {
-        $0.text = currentPizza.namePizza
+        $0.text = currentPizza.pizzaName
         $0.font = UIFont(name: "Verdana", size: 30)
         $0.textAlignment = .center
         $0.textColor = .black
@@ -107,7 +107,7 @@ final class IngredientsPizzaViewController: UIViewController {
         // через делегаты
         billViewController.delegate = self
         // через замыкание
-        billViewController.goToBackTwo = goToBackClosure
+        billViewController.goToBackTwoHandler = goToBackClosure
         billViewController.currentPizza = currentPizza
         let navigationControllerTwo = UINavigationController(rootViewController: billViewController)
         navigationControllerTwo.modalPresentationStyle = .fullScreen
@@ -136,7 +136,7 @@ final class IngredientsPizzaViewController: UIViewController {
     }
 }
 
-/// Подписываем IngredientsPizzaViewController под PopToRootDelegate для возможности очистки экранов с памяти
+/// Подписываемся для возможности очистки экранов с памяти и возврата на корневой VC
 extension IngredientsPizzaViewController: PopToRootDelegate {
     func goToBack() {
         if let billViewController = self.presentingViewController as? UINavigationController {

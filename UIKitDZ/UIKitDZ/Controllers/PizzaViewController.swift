@@ -7,26 +7,26 @@
 
 import UIKit
 
-/// PizzaViewController: экран со списком пицц
+/// Экран со списком пицц
 final class PizzaViewController: UIViewController {
     
     var pizzaArray: [DataPizza] = [
-        DataPizza(namePizza: "Маргарита",
+        DataPizza(pizzaName: "Маргарита",
                   nameImagePizza: "margo",
                   ingredientsPizza: [("Сыр", true), ("Ветчина", true), ("Грибы", true), ("Маслины", true)],
                   compositionPizza: "Моцарелла, томаты, итальянские травы, томатный соус, ветчина, грибы, маслины",
                   kkalPizza: (proteins: "9", fats: "7", carbohydrates: "28,2", kkal: "217,5")),
-        DataPizza(namePizza: "Домашняя",
+        DataPizza(pizzaName: "Домашняя",
                   nameImagePizza: "home",
                   ingredientsPizza: [("Сыр", true), ("Ветчина", true), ("Пеперони", true), ("Соленые огурцы", true)],
                   compositionPizza: "Пепперони, ветчина, маринованные огурчики, томаты, моцарелла, томатный соус",
                   kkalPizza: (proteins: "7,3", fats: "5,4", carbohydrates: "28,2", kkal: "195,9")),
-        DataPizza(namePizza: "Сырный цыпленок",
+        DataPizza(pizzaName: "Сырный цыпленок",
                   nameImagePizza: "cheeseChick",
                   ingredientsPizza: [("Курица", true), ("Чеснок", true), ("Томаты", true)],
                   compositionPizza: "Цыпленок, моцарелла, чеддер, пармезан, сырный соус, томаты, соус альфредо, чеснок",
                   kkalPizza: (proteins: "11", fats: "8,9", carbohydrates: "28,3", kkal: "243,9")),
-        DataPizza(namePizza: "Гавайская",
+        DataPizza(pizzaName: "Гавайская",
                   nameImagePizza: "hawaii",
                   ingredientsPizza: [("Ветчина", true), ("Ананасы", true)],
                   compositionPizza: "Ветчина, ананасы, моцарелла, томатный соус",
@@ -52,7 +52,7 @@ final class PizzaViewController: UIViewController {
         for indexPizza in 0..<pizzaArray.count {
             createPizzaLine(
                 image: pizzaArray[indexPizza].nameImagePizza,
-                name: pizzaArray[indexPizza].namePizza,
+                name: pizzaArray[indexPizza].pizzaName,
                 numberLine: indexPizza)
         }
     }

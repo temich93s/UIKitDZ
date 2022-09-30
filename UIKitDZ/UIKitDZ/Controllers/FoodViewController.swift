@@ -7,7 +7,7 @@
 
 import UIKit
 
-/// FoodViewController: Экран со списком еды
+/// Экран со списком еды
 final class FoodViewController: UIViewController {
     
     private lazy var pizzaButton: UIButton = {
