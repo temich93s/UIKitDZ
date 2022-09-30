@@ -5,6 +5,7 @@
 //  Created by 2lup on 30.09.2022.
 //
 
+import AVFoundation
 import UIKit
 
 /// Экран таймера
@@ -19,6 +20,7 @@ class TimerViewController: UIViewController {
     private var currentHoursTimer = 0
     private var timer = Timer()
     private var finishTimerTime = 0
+    var timerPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +94,13 @@ class TimerViewController: UIViewController {
         else {
             timePickerView.isUserInteractionEnabled = true
             timer.invalidate()
+            guard let urlSound = Bundle.main.url(forResource: "Alarm", withExtension: "mp3") else { return }
+            do {
+                timerPlayer = try AVAudioPlayer(contentsOf: urlSound)
+                timerPlayer.play()
+            } catch {
+                print(error.localizedDescription)
+            }
             return
         }
     }
