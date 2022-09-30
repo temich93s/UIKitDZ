@@ -11,10 +11,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
-    ) { }
+    ) {
+        let loginViewController = LoginViewController()
+        window?.rootViewController = loginViewController
+        window?.backgroundColor = UIColor.white
+    }
 }
