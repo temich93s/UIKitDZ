@@ -8,7 +8,7 @@
 import UIKit
 
 /// ViewController
-class ViewController: UIViewController, UITextFieldDelegate {
+class Conspect: UIViewController, UITextFieldDelegate {
 
     var myTextField = UITextField()
     
