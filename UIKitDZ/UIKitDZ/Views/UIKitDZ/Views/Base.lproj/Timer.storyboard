@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ce7-hn-vMd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Таймер-->
+        <scene sceneID="v2L-lY-1nw">
+            <objects>
+                <viewController id="ce7-hn-vMd" customClass="TimerViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DQa-za-TRP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qL2-Fe-fxt">
+                                <rect key="frame" x="32" y="144" width="350" height="200"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="nEj-eN-Mrt"/>
+                                    <constraint firstAttribute="height" constant="200" id="yto-uS-36a"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYk-pq-q5a">
+                                <rect key="frame" x="40" y="382" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="fbV-ib-Htq"/>
+                                    <constraint firstAttribute="width" constant="80" id="kmm-tz-pqp"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Отмена">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="ce7-hn-vMd" eventType="touchUpInside" id="ch5-2a-Ugn"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTj-nA-dmL">
+                                <rect key="frame" x="32" y="512" width="350" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По окончанию" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWp-bW-Ra3">
+                                        <rect key="frame" x="20" y="5" width="200" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ait-Sd-wkx"/>
+                                            <constraint firstAttribute="width" constant="200" id="eaF-cp-a0j"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTD-Ea-t8R">
+                                        <rect key="frame" x="230" y="5" width="100" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="mbk-4r-oDC"/>
+                                            <constraint firstAttribute="height" constant="40" id="uHM-Qc-9VA"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Радар &gt;">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yWp-bW-Ra3" firstAttribute="centerY" secondItem="qTj-nA-dmL" secondAttribute="centerY" id="0cV-FJ-1vW"/>
+                                    <constraint firstItem="yWp-bW-Ra3" firstAttribute="leading" secondItem="qTj-nA-dmL" secondAttribute="leading" constant="20" id="4mf-rS-Kb4"/>
+                                    <constraint firstItem="aTD-Ea-t8R" firstAttribute="centerY" secondItem="qTj-nA-dmL" secondAttribute="centerY" id="7jY-Zh-RIY"/>
+                                    <constraint firstAttribute="width" constant="350" id="AdQ-zM-9Ai"/>
+                                    <constraint firstAttribute="trailing" secondItem="aTD-Ea-t8R" secondAttribute="trailing" constant="20" id="cZN-gd-T3R"/>
+                                    <constraint firstAttribute="height" constant="50" id="fbw-jc-AgP"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNp-XV-fia">
+                                <rect key="frame" x="294" y="382" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="IcL-7g-EHu"/>
+                                    <constraint firstAttribute="height" constant="80" id="sn7-P3-NYb"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Старт">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="ce7-hn-vMd" eventType="touchUpInside" id="sZB-Fl-xiK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IYu-ti-eox"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qL2-Fe-fxt" firstAttribute="centerX" secondItem="IYu-ti-eox" secondAttribute="centerX" id="05V-ma-fo7"/>
+                            <constraint firstItem="qTj-nA-dmL" firstAttribute="centerX" secondItem="IYu-ti-eox" secondAttribute="centerX" id="5Hu-X1-GYc"/>
+                            <constraint firstItem="nYk-pq-q5a" firstAttribute="leading" secondItem="IYu-ti-eox" secondAttribute="leading" constant="40" id="Im4-ZL-bAT"/>
+                            <constraint firstItem="IYu-ti-eox" firstAttribute="bottom" secondItem="qTj-nA-dmL" secondAttribute="bottom" constant="300" id="PCk-7Z-1cj"/>
+                            <constraint firstItem="IYu-ti-eox" firstAttribute="bottom" secondItem="nYk-pq-q5a" secondAttribute="bottom" constant="400" id="eKV-T0-Vqv"/>
+                            <constraint firstItem="IYu-ti-eox" firstAttribute="trailing" secondItem="zNp-XV-fia" secondAttribute="trailing" constant="40" id="kMV-1F-lOc"/>
+                            <constraint firstItem="qL2-Fe-fxt" firstAttribute="top" secondItem="IYu-ti-eox" secondAttribute="top" constant="100" id="z3Q-vL-oJJ"/>
+                            <constraint firstItem="IYu-ti-eox" firstAttribute="bottom" secondItem="zNp-XV-fia" secondAttribute="bottom" constant="400" id="zPd-ck-Vcg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Таймер" image="timer" catalog="system" id="hJX-ow-HC5"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="nYk-pq-q5a" id="L9K-pa-c1l"/>
+                        <outlet property="startButton" destination="zNp-XV-fia" id="l83-xT-2hs"/>
+                        <outlet property="timePickerView" destination="qL2-Fe-fxt" id="0IV-xO-pWq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u4T-Ct-DbY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879.71014492753625" y="132.58928571428572"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="timer" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
