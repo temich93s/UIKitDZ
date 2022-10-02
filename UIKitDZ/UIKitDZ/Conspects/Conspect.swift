@@ -9,7 +9,7 @@ import UIKit
 
 /// ViewController
 /// UITextViewDelegate - тоже самое что и у TextField
-class ViewController: UIViewController, UITextViewDelegate {
+class Conspect: UIViewController, UITextViewDelegate {
     
     var myTextView = UITextView()
     
@@ -68,8 +68,12 @@ class ViewController: UIViewController, UITextViewDelegate {
                 myTextView.contentInset = UIEdgeInsets.zero
             } else {
                 // scrollIndicatorInsets - Расстояние, на котором индикаторы прокрутки вставлены от края вида прокрутки.
-                myTextView.verticalScrollIndicatorInsets.top = 100.0
-                myTextView.verticalScrollIndicatorInsets.bottom = 400.0
+                myTextView.scrollIndicatorInsets = UIEdgeInsets(
+                    top: 0,
+                    left: 0,
+                    bottom: keyboardFrame.height,
+                    right: 0
+                )
             }
             // scrollRangeToVisible - Прокручивает текстовое представление до тех пор, пока не станет виден текст в указанном диапазоне.
             // selectedRange - Текущий диапазон выбора текстового представления.
