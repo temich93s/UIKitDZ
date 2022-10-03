@@ -9,7 +9,7 @@ import UIKit
 
 /// ViewController
 class Conspect: UIViewController, UITextFieldDelegate {
-
+    
     var myTextField = UITextField()
     
     override func viewDidLoad() {
