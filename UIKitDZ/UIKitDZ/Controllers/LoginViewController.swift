@@ -10,6 +10,19 @@ import UIKit
 /// Экран авторизации
 final class LoginViewController: UIViewController {
 
+    private enum Constants {
+        static let emptyText = ""
+        static let okText = "OK"
+        static let segueId = "login"
+        static let unsuccessfulEnterTitle = "Неудачный вход"
+        static let unsuccessfulEnterMessage = "Учетная запись не найдена"
+        static let registrationTitle = "Учетная запись зарегистрирована"
+        static let successEnterTitle = "Успешный вход"
+        static let successEnterMessage = "Учетная запись найдена"
+        static let UpUIWhenkeyboardWillShow = -200.0
+        static let DownUIWhenkeyboardWillShow = 0.0
+    }
+    
     @IBOutlet weak var nicknameTextView: UITextField!
     @IBOutlet weak var emailTextView: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!
@@ -41,9 +54,9 @@ final class LoginViewController: UIViewController {
             )
         )
         registrationAlert()
-        nicknameTextView.text = ""
-        emailTextView.text = ""
-        passwordTextView.text = ""
+        nicknameTextView.text = Constants.emptyText
+        emailTextView.text = Constants.emptyText
+        passwordTextView.text = Constants.emptyText
     }
     
     @IBAction func enterButtonAction(_ sender: UIButton) {
@@ -77,34 +90,34 @@ final class LoginViewController: UIViewController {
     
     private func unsuccessfulAlert() {
         let alertController = UIAlertController(
-            title: "Неудачный вход",
-            message: "Учетная запись не найдена",
+            title: Constants.unsuccessfulEnterTitle,
+            message: Constants.unsuccessfulEnterMessage,
             preferredStyle: .alert
         )
-        let alertAction = UIAlertAction(title: "ОК", style: .default)
+        let alertAction = UIAlertAction(title: Constants.okText, style: .default)
         alertController.addAction(alertAction)
         present(alertController, animated: true)
     }
     
     private func registrationAlert() {
         let alertController = UIAlertController(
-            title: "Учетная запись зарегистрирована",
-            message: "",
+            title: Constants.registrationTitle,
+            message: Constants.emptyText,
             preferredStyle: .alert
         )
-        let alertAction = UIAlertAction(title: "ОК", style: .default)
+        let alertAction = UIAlertAction(title: Constants.okText, style: .default)
         alertController.addAction(alertAction)
         present(alertController, animated: true)
     }
     
     private func successAlert() {
         let alertController = UIAlertController(
-            title: "Успешный вход",
-            message: "Учетная запись найдена",
+            title: Constants.successEnterTitle,
+            message: Constants.successEnterMessage,
             preferredStyle: .alert
         )
-        let alertAction = UIAlertAction(title: "ОК", style: .default) { _ in
-            self.performSegue(withIdentifier: "login", sender: self)
+        let alertAction = UIAlertAction(title: Constants.okText, style: .default) { _ in
+            self.performSegue(withIdentifier: Constants.segueId, sender: self)
         }
         alertController.addAction(alertAction)
         present(alertController, animated: true)
@@ -122,7 +135,7 @@ final class LoginViewController: UIViewController {
             object: nil,
             queue: nil
         ) { _ in
-            self.view.frame.origin.y = -200.0
+            self.view.frame.origin.y = Constants.UpUIWhenkeyboardWillShow
         }
         
         NotificationCenter.default.addObserver(
@@ -130,7 +143,7 @@ final class LoginViewController: UIViewController {
             object: nil,
             queue: nil
         ) { _ in
-            self.view.frame.origin.y = 0.0
+            self.view.frame.origin.y = Constants.DownUIWhenkeyboardWillShow
         }
     }
     
@@ -154,7 +167,7 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         switch textField {
         case nicknameTextView:
-                return true
+            return true
         case emailTextView:
             guard
                 let safeNicknameText = nicknameTextView.text,

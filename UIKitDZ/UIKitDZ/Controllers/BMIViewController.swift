@@ -10,6 +10,22 @@ import UIKit
 /// Экран с расчетом ИМТ человка
 final class BMIViewController: UIViewController {
 
+    private enum Constants {
+        static let highDeficitWeight = "У вас: Выраженный дефицит массы"
+        static let lowDeficitWeight = "У вас: Недостаточная масса тела"
+        static let normalWeight = "У вас: Норма"
+        static let excessWeight = "У вас: Избыточная масса тела"
+        static let obesityOneStage = "У вас: Ожирение первой степени"
+        static let obesitySecondStage = "У вас: Ожирение второй степени"
+        static let obesityThirdStage = "У вас: Ожирение третьей степени"
+        static let guessText = "Вы угадали 🙂"
+        static let notGuessText = "Вы не угадали ☹️"
+        static let zeroFloat: Float = 0.0
+        static let countComponentPickerView = 1
+        static let countRowPickerView = 100
+        static let offsetNumberForWeight = 20
+    }
+    
     @IBOutlet weak var predictionBMISegmented: UISegmentedControl!
     @IBOutlet weak var heightPersonLabel: UILabel!
     @IBOutlet weak var heightPersonSlider: UISlider!
@@ -56,7 +72,7 @@ final class BMIViewController: UIViewController {
     
     private func setTextForResult(result: Float) {
         guard
-            personBMIData.personHeight != 0.0 && personBMIData.personWeight != 0.0
+            personBMIData.personHeight != Constants.zeroFloat && personBMIData.personWeight != Constants.zeroFloat
         else {
             return
         }
@@ -64,44 +80,44 @@ final class BMIViewController: UIViewController {
         case 0..<16.5:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Выраженный дефицит массы
+                \(Constants.highDeficitWeight)
                 """
             resultBMILabel.backgroundColor = .cyan
             
         case 16.5..<18.5:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Недостаточная масса тела
+                \(Constants.lowDeficitWeight)
                 """
             resultBMILabel.backgroundColor = .cyan
         case 18.5..<25:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Норма
+                \(Constants.normalWeight)
                 """
             resultBMILabel.backgroundColor = .green
         case 25..<30:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Избыточная масса тела
+                \(Constants.excessWeight)
                 """
             resultBMILabel.backgroundColor = .yellow
         case 30..<35:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Ожирение первой степени
+                \(Constants.obesityOneStage)
                 """
             resultBMILabel.backgroundColor = .orange
         case 35..<40:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Ожирение второй степени
+                \(Constants.obesitySecondStage)
                 """
             resultBMILabel.backgroundColor = .red
         case 40...:
             resultBMILabel.text = """
                 \(checkPrediction(result: result))
-                У вас: Ожирение третьей степени
+                \(Constants.obesityThirdStage)
                 """
             resultBMILabel.backgroundColor = .red
         default:
@@ -115,23 +131,23 @@ final class BMIViewController: UIViewController {
             guard
                 0..<18.5 ~= result
             else {
-                return "Вы не угадали ☹️"
+                return "\(Constants.notGuessText)"
             }
-            return "Вы угадали 🙂"
+            return "\(Constants.guessText)"
         case PersonBMIData.Prediction.normally:
             guard
                 18.5..<25 ~= result
             else {
-                return "Вы не угадали ☹️"
+                return "\(Constants.notGuessText)"
             }
-            return "Вы угадали 🙂"
+            return "\(Constants.guessText)"
         case PersonBMIData.Prediction.surplus:
             guard
                 25... ~= result
             else {
-                return "Вы не угадали ☹️"
+                return "\(Constants.notGuessText)"
             }
-            return "Вы угадали 🙂"
+            return "\(Constants.guessText)"
         }
     }
     
@@ -141,11 +157,11 @@ final class BMIViewController: UIViewController {
 extension BMIViewController: UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        Constants.countComponentPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        100
+        Constants.countRowPickerView
     }
     
 }
@@ -154,10 +170,10 @@ extension BMIViewController: UIPickerViewDataSource {
 extension BMIViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(Int(row + 20)) кг"
+        return "\(Int(row + Constants.offsetNumberForWeight)) кг"
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        personBMIData.personWeight = Float(row + 20)
+        personBMIData.personWeight = Float(row + Constants.offsetNumberForWeight)
     }
 }
