@@ -8,74 +8,64 @@
 import UIKit
 
 /// ViewController
-/// UITextViewDelegate - тоже самое что и у TextField
-class ViewController: UIViewController, UITextViewDelegate {
+final class ViewController: UIViewController, UITextViewDelegate {
     
-    var myTextView = UITextView()
+    private enum Constants {
+        static let text = """
+            Swift - это фантастический способ писать приложения для телефонов.
+            Для десктопных компьютеров, серверов, да и чего-либо еще, что запускает и работает при помощи кода.
+            Swift - безопасный, быстрый и интерактивный язык программирования.
+            Swift вобрал в себя лучшие идеи современных языков с мудростью инженерной культуры Apple.
+            Компилятор оптимизирован для производительности.
+            А язык оптимизирован для разработки, без компромиссов с одной или другой стороны.
+            
+            Swift дружелюбен по отношению к новичкам в программировании.
+            Это первый язык программирования промышленного качества.
+            Который также понятен и увлекателен, как скриптовый язык.
+            Написание кода в песочнице позволяет экспериментировать с кодом Swift.
+            И видеть результат мгновенно, без необходимости компилировать и запускать приложение.
+            
+            Swift исключает большой пласт распространенных программных ошибок.
+            При помощи применения современных программных паттернов:
+            - Переменные всегда инициализированы до того, как будут использованы.
+            - Индексы массивов всегда проверяются на out-of-bounds ошибки.
+            - Целые числа проверяются на переполнение.
+            - Опционалы гарантируют, что значения nil будут явно обработаны.
+            - Автоматическое управление памятью
+            - Обработка ошибок позволяет осуществлять контролируемое восстановление от непредвиденных ошибок.
+            
+            Код на Swift скомпилирован и оптимизирован, чтобы получать максимальную отдачу от современного оборудования.
+            Синтаксис и стандартная библиотека спроектированы основываясь на руководстве.
+            Что самый очевидный и простой способ написания кода является лучшим вариантом.
+            Комбинация безопасности и скорости делает Swift лучшим кандидатом для написания программ.
+            От уровня "Hello, World!" и до целой операционной системы.
+            
+            Swift совмещает вывод типов и паттерн-матчинг с современным простым синтаксисом.
+            Позволяя сложным идеям быть выраженными просто и кратко.
+            И в качестве результата не только становится проще писать код.
+            Но и читать его и поддерживать так же становится просто.
+            
+            Swift уже имеет за плечами годы развития, и он продолжает развиваться.
+            Включая в себя все новые и новые возможности.
+            Наши цели на Swift очень амбициозные.
+            Мы с нетерпением ждем, чтобы увидеть что у вас получится создать с его помощью.
+            """
+    }
+    
+    private let readerTextView: UITextView = {
+        $0.text = Constants.text
+        return $0
+    }(UITextView())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createTextView()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateTextView),
-            name: UIResponder.keyboardDidShowNotification,
-            object: nil
-        )
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateTextView),
-            name: UIResponder.keyboardDidHideNotification,
-            object: nil
-        )
-    }
-
-    func createTextView() {
-        myTextView = UITextView(frame:
-                                    CGRect(
-                                        x: 20,
-                                        y: 100,
-                                        width: view.bounds.width - 40,
-                                        height: view.bounds.height / 2
-                                    )
-        )
-        myTextView.text = "some text"
-        // contentInset - Настраиваемое расстояние, на которое вставляется представление содержимого от безопасной области или краев scrollview.
-        myTextView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        myTextView.font = UIFont.systemFont(ofSize: 24)
-        myTextView.backgroundColor = .secondarySystemBackground
-        view.addSubview(myTextView)
+        setUI()
     }
     
-    // скрываем клавиатуру при нажатии на view (именно саму view у ViewController)
-    override func touchesBegan(_ touchesSet: Set<UITouch>, with event: UIEvent?) {
-        myTextView.resignFirstResponder()
-    }
-    
-    @objc func updateTextView(param: Notification) {
-        // userInfo - Хранилище для значений или объектов, связанных с этим уведомлением.
-        let userInfo = param.userInfo
-        // keyboardFrameEndUserInfoKey - Информационная клавиша пользователя для получения кадра клавиатуры в конце анимации.
-        // NSValue - Простой контейнер для одного элемента данных C или Objective-C.
-        // cgRectValue - Возвращает представление прямоугольной структуры CoreGraphics значения.
-        // getKeyboardRect - получили контуры нашей клавиатуры
-        if let getKeyboardRect = ((userInfo?[UIResponder.keyboardFrameEndUserInfoKey] ?? "") as? NSValue)?.cgRectValue {
-            // convert - Преобразует прямоугольник из системы координат получателя в систему координат другого вида.
-            // - rect - Прямоугольник, указанный в локальной системе координат (границах) приемника.
-            // - view - Представление, которое является целью операции преобразования. Если view равен нулю, этот метод вместо этого преобразует в базовые координаты окна.
-            let keyboardFrame = view.convert(getKeyboardRect, to: view.window)
-            if param.name == UIResponder.keyboardWillHideNotification {
-                myTextView.contentInset = UIEdgeInsets.zero
-            } else {
-                // scrollIndicatorInsets - Расстояние, на котором индикаторы прокрутки вставлены от края вида прокрутки.
-                myTextView.verticalScrollIndicatorInsets.top = 100.0
-                myTextView.verticalScrollIndicatorInsets.bottom = 400.0
-            }
-            // scrollRangeToVisible - Прокручивает текстовое представление до тех пор, пока не станет виден текст в указанном диапазоне.
-            // selectedRange - Текущий диапазон выбора текстового представления.
-            myTextView.scrollRangeToVisible(myTextView.selectedRange)
-        }
-
+    private func setUI() {
+        view.addSubview(readerTextView)
+        
+        readerTextView.frame = CGRect(x: 0, y: 50, width: view.bounds.width, height: view.bounds.height - 200)
     }
     
 }
