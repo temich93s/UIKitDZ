@@ -8,7 +8,7 @@
 import UIKit
 
 /// Экран с расчетом ИМТ человка
-class BMIViewController: UIViewController {
+final class BMIViewController: UIViewController {
 
     @IBOutlet weak var predictionBMISegmented: UISegmentedControl!
     @IBOutlet weak var heightPersonLabel: UILabel!
