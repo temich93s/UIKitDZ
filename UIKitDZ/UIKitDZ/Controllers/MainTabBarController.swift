@@ -7,14 +7,20 @@
 
 import UIKit
 
+// MARK: - MainTabBarController
+
 /// основной таб бар приложения
 final class MainTabBarController: UITabBarController {
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBar()
         setTabBarAppearance()
     }
+    
+    // MARK: - Private Methods
     
     private func setTabBar() {
         let exampleLabelViewController = ExampleLabelViewController()

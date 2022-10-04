@@ -7,8 +7,11 @@
 
 import UIKit
 
+// Видеоурок 12
+
+/*
 /// ViewController
-class ConspectViewController: UIViewController {
+final class ConspectViewController: UIViewController {
 
     let myLabel = UILabel()
     
@@ -30,3 +33,4 @@ class ConspectViewController: UIViewController {
     }
 
 }
+*/

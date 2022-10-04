@@ -7,9 +7,13 @@
 
 import UIKit
 
+// MARK: - ExampleLabelViewController
+
 /// Экран где можно кастомизировать label
 final class ExampleLabelViewController: UIViewController {
 
+    // MARK: - Private Properties
+    
     private let exampleLabel: UILabel = {
         $0.text = "TEXT"
         $0.numberOfLines = 0
@@ -50,11 +54,15 @@ final class ExampleLabelViewController: UIViewController {
     private var blueColor: CGFloat = 0.0
     private var alfaColor: CGFloat = 0.0
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setDelegateAndDataSource()
     }
+    
+    // MARK: - Private Methods
 
     private func setDelegateAndDataSource() {
         colorTextPicker.delegate = self
@@ -110,7 +118,8 @@ final class ExampleLabelViewController: UIViewController {
     }
 }
 
-/// устанавливаем количество компонентов и строк пикерам
+// MARK: - UIPickerViewDelegate
+
 extension ExampleLabelViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
@@ -158,7 +167,8 @@ extension ExampleLabelViewController: UIPickerViewDelegate {
     }
 }
 
-/// Устанавливаем данные пикерам и обрабатываем события по выбранному пункту из пикера
+// MARK: - UIPickerViewDataSource
+
 extension ExampleLabelViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView {
