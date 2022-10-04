@@ -18,6 +18,9 @@ final class TimerViewController: UIViewController {
     @IBOutlet private weak var startButton: UIButton!
     @IBOutlet private weak var cancelButton: UIButton!
     @IBOutlet private weak var timePickerView: UIPickerView!
+    @IBOutlet private weak var backgroundAlarmView: UIView!
+    @IBOutlet private weak var strokePanelForStartButtonView: UIView!
+    @IBOutlet private weak var strokePanelForCancelButtonView: UIView!
     
     // MARK: - Private Properties
     
@@ -77,16 +80,24 @@ final class TimerViewController: UIViewController {
     
     private func setUI() {
         startButton.layer.cornerRadius = startButton.bounds.height / 2
-        startButton.layer.borderWidth = 2
-        startButton.layer.borderColor = CGColor(red: 0, green: 255, blue: 0, alpha: 0.5)
         cancelButton.layer.cornerRadius = cancelButton.bounds.height / 2
-        cancelButton.layer.borderWidth = 2
-        cancelButton.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+        backgroundAlarmView.layer.cornerRadius = backgroundAlarmView.frame.height / 4
+        
+        strokePanelForStartButtonView.layer.cornerRadius = strokePanelForStartButtonView.frame.height / 2
+        strokePanelForStartButtonView.layer.borderWidth = 2
+        strokePanelForStartButtonView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        strokePanelForStartButtonView.isUserInteractionEnabled = false
+        
+        strokePanelForCancelButtonView.layer.cornerRadius = strokePanelForStartButtonView.frame.height / 2
+        strokePanelForCancelButtonView.layer.borderWidth = 2
+        strokePanelForCancelButtonView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        strokePanelForCancelButtonView.isUserInteractionEnabled = false
+        
         timePickerView.tintColor = .white
         startButton.setTitle("Старт", for: .disabled)
         startButton.setTitleColor(.lightGray, for: .disabled)
         startButton.setTitle("Старт", for: .normal)
-        startButton.setTitleColor(.white, for: .normal)
+        startButton.setTitleColor(.green, for: .normal)
     }
     
     @objc private func fireTimer() {

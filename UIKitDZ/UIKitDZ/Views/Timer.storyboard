@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +26,7 @@
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYk-pq-q5a">
                                 <rect key="frame" x="40" y="382" width="80" height="80"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="fbV-ib-Htq"/>
                                     <constraint firstAttribute="width" constant="80" id="kmm-tz-pqp"/>
@@ -65,7 +66,7 @@
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="yWp-bW-Ra3" firstAttribute="centerY" secondItem="qTj-nA-dmL" secondAttribute="centerY" id="0cV-FJ-1vW"/>
                                     <constraint firstItem="yWp-bW-Ra3" firstAttribute="leading" secondItem="qTj-nA-dmL" secondAttribute="leading" constant="20" id="4mf-rS-Kb4"/>
@@ -77,12 +78,12 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zNp-XV-fia">
                                 <rect key="frame" x="294" y="382" width="80" height="80"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.19902069521280849" green="0.31592337711892948" blue="0.17826955689617932" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="IcL-7g-EHu"/>
                                     <constraint firstAttribute="height" constant="80" id="sn7-P3-NYb"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Старт">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
@@ -91,24 +92,46 @@
                                     <action selector="startButtonAction:" destination="ce7-hn-vMd" eventType="touchUpInside" id="sZB-Fl-xiK"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMX-ZA-xnM">
+                                <rect key="frame" x="296.5" y="384.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="7iO-uv-0hN"/>
+                                    <constraint firstAttribute="width" constant="75" id="udC-N7-S7x"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZz-ia-xM2">
+                                <rect key="frame" x="42.5" y="384.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="8q7-YU-pMl"/>
+                                    <constraint firstAttribute="height" constant="75" id="dYt-Wk-7vl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="IYu-ti-eox"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qL2-Fe-fxt" firstAttribute="centerX" secondItem="IYu-ti-eox" secondAttribute="centerX" id="05V-ma-fo7"/>
+                            <constraint firstItem="OZz-ia-xM2" firstAttribute="centerY" secondItem="nYk-pq-q5a" secondAttribute="centerY" id="4Fj-qo-lY6"/>
                             <constraint firstItem="qTj-nA-dmL" firstAttribute="centerX" secondItem="IYu-ti-eox" secondAttribute="centerX" id="5Hu-X1-GYc"/>
+                            <constraint firstItem="OZz-ia-xM2" firstAttribute="centerX" secondItem="nYk-pq-q5a" secondAttribute="centerX" id="EPQ-E1-dQ4"/>
                             <constraint firstItem="nYk-pq-q5a" firstAttribute="leading" secondItem="IYu-ti-eox" secondAttribute="leading" constant="40" id="Im4-ZL-bAT"/>
                             <constraint firstItem="IYu-ti-eox" firstAttribute="bottom" secondItem="qTj-nA-dmL" secondAttribute="bottom" constant="300" id="PCk-7Z-1cj"/>
+                            <constraint firstItem="DMX-ZA-xnM" firstAttribute="centerY" secondItem="zNp-XV-fia" secondAttribute="centerY" id="UjZ-6S-pjD"/>
+                            <constraint firstItem="DMX-ZA-xnM" firstAttribute="centerX" secondItem="zNp-XV-fia" secondAttribute="centerX" id="c20-mF-Qnh"/>
                             <constraint firstItem="IYu-ti-eox" firstAttribute="bottom" secondItem="nYk-pq-q5a" secondAttribute="bottom" constant="400" id="eKV-T0-Vqv"/>
                             <constraint firstItem="IYu-ti-eox" firstAttribute="trailing" secondItem="zNp-XV-fia" secondAttribute="trailing" constant="40" id="kMV-1F-lOc"/>
+                            <constraint firstItem="IYu-ti-eox" firstAttribute="trailing" secondItem="zNp-XV-fia" secondAttribute="trailing" constant="40" id="u2b-Gb-kog"/>
                             <constraint firstItem="qL2-Fe-fxt" firstAttribute="top" secondItem="IYu-ti-eox" secondAttribute="top" constant="100" id="z3Q-vL-oJJ"/>
                             <constraint firstItem="IYu-ti-eox" firstAttribute="bottom" secondItem="zNp-XV-fia" secondAttribute="bottom" constant="400" id="zPd-ck-Vcg"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Таймер" image="timer" catalog="system" id="hJX-ow-HC5"/>
                     <connections>
+                        <outlet property="backgroundAlarmView" destination="qTj-nA-dmL" id="5Rg-KZ-ufT"/>
                         <outlet property="cancelButton" destination="nYk-pq-q5a" id="L9K-pa-c1l"/>
                         <outlet property="startButton" destination="zNp-XV-fia" id="l83-xT-2hs"/>
+                        <outlet property="strokePanelForCancelButtonView" destination="OZz-ia-xM2" id="2DI-LY-qEb"/>
+                        <outlet property="strokePanelForStartButtonView" destination="DMX-ZA-xnM" id="BVc-Ej-ju2"/>
                         <outlet property="timePickerView" destination="qL2-Fe-fxt" id="0IV-xO-pWq"/>
                     </connections>
                 </viewController>
@@ -119,5 +142,8 @@
     </scenes>
     <resources>
         <image name="timer" catalog="system" width="128" height="121"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
