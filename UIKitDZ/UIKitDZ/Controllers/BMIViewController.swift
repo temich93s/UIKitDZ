@@ -14,12 +14,12 @@ final class BMIViewController: UIViewController {
     
     // MARK: - IBOutlet
     
-    @IBOutlet weak var predictionBMISegmented: UISegmentedControl!
-    @IBOutlet weak var heightPersonLabel: UILabel!
-    @IBOutlet weak var heightPersonSlider: UISlider!
-    @IBOutlet weak var weightPersonLabel: UILabel!
-    @IBOutlet weak var weightPersonPickerView: UIPickerView!
-    @IBOutlet weak var resultBMILabel: UILabel!
+    @IBOutlet private weak var predictionBMISegmented: UISegmentedControl!
+    @IBOutlet private weak var heightPersonLabel: UILabel!
+    @IBOutlet private weak var heightPersonSlider: UISlider!
+    @IBOutlet private weak var weightPersonLabel: UILabel!
+    @IBOutlet private weak var weightPersonPickerView: UIPickerView!
+    @IBOutlet private weak var resultBMILabel: UILabel!
     
     // MARK: - Private Properties
     

@@ -14,11 +14,11 @@ final class LoginViewController: UIViewController {
     
     // MARK: - IBOutlet
     
-    @IBOutlet weak var nicknameTextView: UITextField!
-    @IBOutlet weak var emailTextView: UITextField!
-    @IBOutlet weak var passwordTextView: UITextField!
-    @IBOutlet weak var registrationButton: UIButton!
-    @IBOutlet weak var enterButton: UIButton!
+    @IBOutlet private weak var nicknameTextView: UITextField!
+    @IBOutlet private weak var emailTextView: UITextField!
+    @IBOutlet private weak var passwordTextView: UITextField!
+    @IBOutlet private weak var registrationButton: UIButton!
+    @IBOutlet private weak var enterButton: UIButton!
     
     // MARK: - Private Properties
     
