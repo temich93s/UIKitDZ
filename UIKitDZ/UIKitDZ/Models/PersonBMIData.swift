@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - PersonBMIData
+
 /// PersonBMIData: Данные по расчету ИМТ человека
 /// - Prediction: предположение пользователя о результате
 ///   - shortage: недобор веса
@@ -16,13 +18,23 @@ import Foundation
 /// - personHeight: рост человека
 struct PersonBMIData {
     
+    // MARK: - Enums
+    
     enum Prediction {
         case shortage
         case normally
         case surplus
     }
     
+    // MARK: - Public Properties
+    
     var personPrediction: Prediction = .shortage
-    var personWeight: Float = 0.0
-    var personHeight: Float = 0.0
+    var personWeight = Constants.numberZero
+    var personHeight = Constants.numberZero
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let numberZero: Float = 0.0
+    }
 }

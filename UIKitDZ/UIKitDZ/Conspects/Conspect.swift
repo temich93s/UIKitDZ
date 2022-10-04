@@ -7,7 +7,9 @@
 
 import UIKit
 
-/// ViewController
+// Видеоурок 13
+
+/*
 class Conspect: UIViewController, UITextFieldDelegate {
     
     var myTextField = UITextField()
@@ -118,3 +120,4 @@ class Conspect: UIViewController, UITextFieldDelegate {
         return true
     }
 }
+*/

@@ -7,21 +7,12 @@
 
 import UIKit
 
+// MARK: - LoginViewController
+
 /// Экран авторизации
 final class LoginViewController: UIViewController {
-
-    private enum Constants {
-        static let emptyText = ""
-        static let okText = "OK"
-        static let segueId = "login"
-        static let unsuccessfulEnterTitle = "Неудачный вход"
-        static let unsuccessfulEnterMessage = "Учетная запись не найдена"
-        static let registrationTitle = "Учетная запись зарегистрирована"
-        static let successEnterTitle = "Успешный вход"
-        static let successEnterMessage = "Учетная запись найдена"
-        static let UpUIWhenkeyboardWillShow = -200.0
-        static let DownUIWhenkeyboardWillShow = 0.0
-    }
+    
+    // MARK: - IBOutlet
     
     @IBOutlet weak var nicknameTextView: UITextField!
     @IBOutlet weak var emailTextView: UITextField!
@@ -29,7 +20,11 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var registrationButton: UIButton!
     @IBOutlet weak var enterButton: UIButton!
     
+    // MARK: - Private Properties
+    
     private var usersArray: [UserData] = []
+    
+    // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +32,8 @@ final class LoginViewController: UIViewController {
         setNotificationCenter()
     }
 
+    // MARK: - IBAction
+    
     @IBAction func registrationButtonAction(_ sender: UIButton) {
         guard
             let safeNicknameText = nicknameTextView.text,
@@ -87,6 +84,8 @@ final class LoginViewController: UIViewController {
         }
         successAlert()
     }
+    
+    // MARK: - Private Methods
     
     private func unsuccessfulAlert() {
         let alertController = UIAlertController(
@@ -147,9 +146,24 @@ final class LoginViewController: UIViewController {
         }
     }
     
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let emptyText = ""
+        static let okText = "OK"
+        static let segueId = "login"
+        static let unsuccessfulEnterTitle = "Неудачный вход"
+        static let unsuccessfulEnterMessage = "Учетная запись не найдена"
+        static let registrationTitle = "Учетная запись зарегистрирована"
+        static let successEnterTitle = "Успешный вход"
+        static let successEnterMessage = "Учетная запись найдена"
+        static let UpUIWhenkeyboardWillShow = -200.0
+        static let DownUIWhenkeyboardWillShow = 0.0
+    }
 }
 
-/// Подписываемся на отслеживание событий у UITextField
+// MARK: - UITextFieldDelegate
+
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
