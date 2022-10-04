@@ -7,7 +7,9 @@
 
 import UIKit
 
-/// ViewController
+// ВИДЕОУРОК 14
+
+/*
 /// UITextViewDelegate - тоже самое что и у TextField
 class Conspect: UIViewController, UITextViewDelegate {
     
@@ -83,3 +85,4 @@ class Conspect: UIViewController, UITextViewDelegate {
     }
     
 }
+*/
