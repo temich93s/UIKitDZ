@@ -5,6 +5,9 @@
 //  Created by 2lup on 21.09.2022.
 //
 
+// Видеоурок 11
+
+/*
 import UIKit
 
 /// ViewController
@@ -22,3 +25,4 @@ class ViewController: UIViewController {
     }
 
 }
+*/

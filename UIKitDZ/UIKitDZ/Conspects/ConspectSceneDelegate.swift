@@ -5,6 +5,9 @@
 //  Created by 2lup on 21.09.2022.
 //
 
+// Видеоурок 11
+
+/*
 import UIKit
 
 /// SceneDelegate
@@ -35,3 +38,4 @@ class SceneDelegate1: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .white
     }
 }
+*/

@@ -7,9 +7,13 @@
 
 import UIKit
 
+// MARK: - WorldClockViewController
+
 /// Экран мирового время
 final class WorldClockViewController: UIViewController {
 
+    // MARK: - Lifecycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

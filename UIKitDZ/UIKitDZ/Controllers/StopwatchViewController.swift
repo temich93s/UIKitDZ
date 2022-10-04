@@ -7,9 +7,13 @@
 
 import UIKit
 
+// MARK: - StopwatchViewController
+
 /// Экран секундомера
 final class StopwatchViewController: UIViewController {
 
+    // MARK: - Lifecycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

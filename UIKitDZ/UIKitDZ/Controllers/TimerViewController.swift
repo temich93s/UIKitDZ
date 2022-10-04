@@ -8,12 +8,18 @@
 import AVFoundation
 import UIKit
 
+// MARK: - TimerViewController
+
 /// Экран таймера
 final class TimerViewController: UIViewController {
     
-    @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var timePickerView: UIPickerView!
+    // MARK: - IBOutlet
+    
+    @IBOutlet private weak var startButton: UIButton!
+    @IBOutlet private weak var cancelButton: UIButton!
+    @IBOutlet private weak var timePickerView: UIPickerView!
+    
+    // MARK: - Private Properties
     
     private var currentSecondsTimer = 0
     private var currentMinutesTimer = 0
@@ -22,11 +28,15 @@ final class TimerViewController: UIViewController {
     private var finishTimerTime = 0
     private var timerPlayer: AVAudioPlayer!
     
+    // MARK: - Lifecycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         setDataSourceAndDelegate()
     }
+    
+    // MARK: - IBAction
     
     @IBAction func startButtonAction(_ sender: UIButton) {
         guard !(currentHoursTimer == 0 && currentMinutesTimer == 0 && currentSecondsTimer == 0)
@@ -57,6 +67,8 @@ final class TimerViewController: UIViewController {
             timePickerView.selectRow(0, inComponent: number, animated: true)
         }
     }
+    
+    // MARK: - Private Methods
     
     private func setDataSourceAndDelegate() {
         timePickerView.dataSource = self
@@ -111,14 +123,14 @@ final class TimerViewController: UIViewController {
     
 }
 
-/// Устанавливаем количество секций и строк
+// MARK: - UIPickerViewDataSource
+
 extension TimerViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         3
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        print(component)
         switch component {
         case 0:
             return 24
@@ -132,7 +144,8 @@ extension TimerViewController: UIPickerViewDataSource {
     }
 }
 
-/// Устанавливаем содержимое pickerView и обрабатываем события выбранной строки
+// MARK: - UIPickerViewDelegate
+
 extension TimerViewController: UIPickerViewDelegate {
     func pickerView(
         _ pickerView: UIPickerView,

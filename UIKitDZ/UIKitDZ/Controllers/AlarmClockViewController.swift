@@ -7,18 +7,26 @@
 
 import UIKit
 
+// MARK: - AlarmClockViewController
+
 /// Экран будильника
 final class AlarmClockViewController: UIViewController {
 
-    @IBOutlet weak var setAlarmClock: UIButton!
-    @IBOutlet weak var firstAlarmSwitch: UISwitch!
-    @IBOutlet weak var secondAlarmSwitch: UISwitch!
-    @IBOutlet weak var thirdAlarmSwitch: UISwitch!
+    // MARK: - IBOutlet
+    
+    @IBOutlet private weak var setAlarmClock: UIButton!
+    @IBOutlet private weak var firstAlarmSwitch: UISwitch!
+    @IBOutlet private weak var secondAlarmSwitch: UISwitch!
+    @IBOutlet private weak var thirdAlarmSwitch: UISwitch!
+    
+    // MARK: - Lifecycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
     }
+    
+    // MARK: - Private Methods
 
     private func setUI() {
         firstAlarmSwitch.layer.cornerRadius = 16

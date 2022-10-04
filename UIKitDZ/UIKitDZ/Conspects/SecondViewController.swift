@@ -5,6 +5,9 @@
 //  Created by 2lup on 30.09.2022.
 //
 
+// Видеоурок 11
+
+/*
 import UIKit
 
 /// SecondViewController
@@ -21,3 +24,4 @@ class SecondViewController: UIViewController {
     }
 
 }
+*/
