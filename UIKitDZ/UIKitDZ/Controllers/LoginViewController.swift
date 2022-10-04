@@ -23,6 +23,8 @@ final class LoginViewController: UIViewController {
     // MARK: - Private Properties
     
     private var usersArray: [UserData] = []
+    private var listUsersArray: [[String]] = []
+    private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycles
     
@@ -30,6 +32,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         setDelegate()
         setNotificationCenter()
+        setUserDefaults()
     }
 
     // MARK: - IBAction
@@ -50,6 +53,8 @@ final class LoginViewController: UIViewController {
                 passwordUser: safePasswordText
             )
         )
+        listUsersArray.append([safeNicknameText, safeEmailText, safePasswordText])
+        self.defaults.set(self.listUsersArray, forKey: "ListUsers")
         registrationAlert()
         nicknameTextView.text = Constants.emptyText
         emailTextView.text = Constants.emptyText
@@ -66,11 +71,12 @@ final class LoginViewController: UIViewController {
         else {
             return
         }
-        for userData in usersArray {
+        for userData in listUsersArray {
             guard
-                safeNicknameUser == userData.nicknameUser,
-                safeEmailUser == userData.emailUser,
-                safePasswordUser == userData.passwordUser
+                userData.count == 3,
+                safeNicknameUser == userData[0],
+                safeEmailUser == userData[1],
+                safePasswordUser == userData[2]
             else {
                 continue
             }
@@ -126,6 +132,12 @@ final class LoginViewController: UIViewController {
         nicknameTextView.delegate = self
         emailTextView.delegate = self
         passwordTextView.delegate = self
+    }
+    
+    private func setUserDefaults() {
+        if let items = defaults.array(forKey: "ListUsers") as? [[String]] {
+            listUsersArray = items
+        }
     }
     
     private func setNotificationCenter() {
