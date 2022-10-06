@@ -1,5 +1,5 @@
 //
-//  PersonBMIData.swift
+//  PersonBMI.swift
 //  UIKitDZ
 //
 //  Created by 2lup on 03.10.2022.
@@ -7,16 +7,20 @@
 
 import Foundation
 
-// MARK: - PersonBMIData
-
-/// PersonBMIData: Данные по расчету ИМТ человека
+/// PersonBMI: Данные по расчету ИМТ человека
 /// - Prediction: предположение пользователя о результате
 ///   - shortage: недобор веса
 ///   - normally: нормальный вес
 ///   - surplus: избытток веса
 /// - personWeight: вес человека
 /// - personHeight: рост человека
-struct PersonBMIData {
+struct PersonBMI {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let numberZero: Float = 0.0
+    }
     
     // MARK: - Enums
     
@@ -31,10 +35,5 @@ struct PersonBMIData {
     var personPrediction: Prediction = .shortage
     var personWeight = Constants.numberZero
     var personHeight = Constants.numberZero
-    
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let numberZero: Float = 0.0
-    }
+
 }

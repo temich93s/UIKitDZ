@@ -7,10 +7,37 @@
 
 import UIKit
 
-// MARK: - BMIViewController
-
 /// Экран с расчетом ИМТ человка
 final class BMIViewController: UIViewController {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let highDeficitWeight = "У вас: Выраженный дефицит массы"
+        static let lowDeficitWeight = "У вас: Недостаточная масса тела"
+        static let normalWeight = "У вас: Норма"
+        static let excessWeight = "У вас: Избыточная масса тела"
+        static let obesityFirstStage = "У вас: Ожирение первой степени"
+        static let obesitySecondStage = "У вас: Ожирение второй степени"
+        static let obesityThirdStage = "У вас: Ожирение третьей степени"
+        static let guessText = "Вы угадали 🙂"
+        static let notGuessText = "Вы не угадали ☹️"
+        static let zeroFloat: Float = 0.0
+        static let countComponentPickerView = 1
+        static let countRowPickerView = 100
+        static let offsetNumberForWeight = 20
+        static let topLineShortage: Float = 18.5
+        static let topLineNormally: Float = 25
+        static let kgText = "кг"
+        static let smText = "см"
+        static let yourHightText = "Ваш рост:"
+        static let topLineHighDeficitWeight: Float = 16.5
+        static let topLineLowDeficitWeight: Float = 18.5
+        static let topLineNormalWeight: Float = 25
+        static let topLineExcessWeight: Float = 30
+        static let topLineObesityFirstStage: Float = 35
+        static let topLineObesitySecondStage: Float = 40
+    }
     
     // MARK: - IBOutlet
     
@@ -23,7 +50,8 @@ final class BMIViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private var personBMIData = PersonBMIData()
+    private var personBMI = PersonBMI()
+    private var predictionsBMI: [PersonBMI.Prediction] = [.shortage, .normally, .surplus]
     
     // MARK: - Lifecycles
     
@@ -35,26 +63,17 @@ final class BMIViewController: UIViewController {
     // MARK: - IBAction
     
     @IBAction func predictionBMIAction(_ sender: UISegmentedControl) {
-        switch predictionBMISegmented.selectedSegmentIndex {
-        case 0:
-            personBMIData.personPrediction = .shortage
-        case 1:
-            personBMIData.personPrediction = .normally
-        case 2:
-            personBMIData.personPrediction = .surplus
-        default:
-            break
-        }
+        personBMI.personPrediction = predictionsBMI[predictionBMISegmented.selectedSegmentIndex]
     }
     
     @IBAction func heightPersonAction(_ sender: UISlider) {
         let decimalNumber = round(heightPersonSlider.value)
         heightPersonLabel.text = "\(Constants.yourHightText) \(Int(decimalNumber)) \(Constants.smText)"
-        personBMIData.personHeight = decimalNumber
+        personBMI.personHeight = decimalNumber
     }
     
     @IBAction func calculateBMIAction(_ sender: UIButton) {
-        let result = personBMIData.personWeight / pow((personBMIData.personHeight / 100), 2)
+        let result = personBMI.personWeight / pow((personBMI.personHeight / 100), 2)
         setTextForResult(result: result)
         print(result)
     }
@@ -68,7 +87,7 @@ final class BMIViewController: UIViewController {
     
     private func setTextForResult(result: Float) {
         guard
-            personBMIData.personHeight != Constants.zeroFloat && personBMIData.personWeight != Constants.zeroFloat
+            personBMI.personHeight != Constants.zeroFloat && personBMI.personWeight != Constants.zeroFloat
         else {
             return
         }
@@ -122,7 +141,7 @@ final class BMIViewController: UIViewController {
     }
     
     private func checkPrediction(result: Float) -> String {
-        switch personBMIData.personPrediction {
+        switch personBMI.personPrediction {
         case .shortage:
             guard
                 Constants.zeroFloat..<Constants.topLineShortage ~= result
@@ -147,34 +166,6 @@ final class BMIViewController: UIViewController {
         }
     }
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let highDeficitWeight = "У вас: Выраженный дефицит массы"
-        static let lowDeficitWeight = "У вас: Недостаточная масса тела"
-        static let normalWeight = "У вас: Норма"
-        static let excessWeight = "У вас: Избыточная масса тела"
-        static let obesityFirstStage = "У вас: Ожирение первой степени"
-        static let obesitySecondStage = "У вас: Ожирение второй степени"
-        static let obesityThirdStage = "У вас: Ожирение третьей степени"
-        static let guessText = "Вы угадали 🙂"
-        static let notGuessText = "Вы не угадали ☹️"
-        static let zeroFloat: Float = 0.0
-        static let countComponentPickerView = 1
-        static let countRowPickerView = 100
-        static let offsetNumberForWeight = 20
-        static let topLineShortage: Float = 18.5
-        static let topLineNormally: Float = 25
-        static let kgText = "кг"
-        static let smText = "см"
-        static let yourHightText = "Ваш рост:"
-        static let topLineHighDeficitWeight: Float = 16.5
-        static let topLineLowDeficitWeight: Float = 18.5
-        static let topLineNormalWeight: Float = 25
-        static let topLineExcessWeight: Float = 30
-        static let topLineObesityFirstStage: Float = 35
-        static let topLineObesitySecondStage: Float = 40
-    }
 }
 
 // MARK: - UIPickerViewDataSource
@@ -200,6 +191,6 @@ extension BMIViewController: UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        personBMIData.personWeight = Float(row + Constants.offsetNumberForWeight)
+        personBMI.personWeight = Float(row + Constants.offsetNumberForWeight)
     }
 }

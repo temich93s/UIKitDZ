@@ -7,8 +7,6 @@
 
 import Foundation
 
-// MARK: - UserData
-
 /// UserData: Данные о пользователя
 /// - nicknameUser: Никнейм пользователя
 /// - emailUser: Электронная почта пользователя

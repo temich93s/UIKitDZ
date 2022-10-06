@@ -7,10 +7,23 @@
 
 import UIKit
 
-// MARK: - LoginViewController
-
 /// Экран авторизации
 final class LoginViewController: UIViewController {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let emptyText = ""
+        static let okText = "OK"
+        static let segueId = "login"
+        static let unsuccessfulEnterTitle = "Неудачный вход"
+        static let unsuccessfulEnterMessage = "Учетная запись не найдена"
+        static let registrationTitle = "Учетная запись зарегистрирована"
+        static let successEnterTitle = "Успешный вход"
+        static let successEnterMessage = "Учетная запись найдена"
+        static let UpUIWhenkeyboardWillShow = -200.0
+        static let DownUIWhenkeyboardWillShow = 0.0
+    }
     
     // MARK: - IBOutlet
     
@@ -22,8 +35,8 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private var usersArray: [UserData] = []
-    private var listUsersArray: [[String]] = []
+    private var users: [UserData] = []
+    private var listUsers: [[String]] = []
     private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycles
@@ -46,15 +59,15 @@ final class LoginViewController: UIViewController {
         else {
             return
         }
-        usersArray.append(
+        users.append(
             UserData(
                 nicknameUser: safeNicknameText,
                 emailUser: safeEmailText,
                 passwordUser: safePasswordText
             )
         )
-        listUsersArray.append([safeNicknameText, safeEmailText, safePasswordText])
-        self.defaults.set(self.listUsersArray, forKey: "ListUsers")
+        listUsers.append([safeNicknameText, safeEmailText, safePasswordText])
+        self.defaults.set(self.listUsers, forKey: "ListUsers")
         registrationAlert()
         nicknameTextView.text = Constants.emptyText
         emailTextView.text = Constants.emptyText
@@ -71,7 +84,7 @@ final class LoginViewController: UIViewController {
         else {
             return
         }
-        for userData in listUsersArray {
+        for userData in listUsers {
             guard
                 userData.count == 3,
                 safeNicknameUser == userData[0],
@@ -136,7 +149,7 @@ final class LoginViewController: UIViewController {
     
     private func setUserDefaults() {
         if let items = defaults.array(forKey: "ListUsers") as? [[String]] {
-            listUsersArray = items
+            listUsers = items
         }
     }
     
@@ -158,20 +171,6 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let emptyText = ""
-        static let okText = "OK"
-        static let segueId = "login"
-        static let unsuccessfulEnterTitle = "Неудачный вход"
-        static let unsuccessfulEnterMessage = "Учетная запись не найдена"
-        static let registrationTitle = "Учетная запись зарегистрирована"
-        static let successEnterTitle = "Успешный вход"
-        static let successEnterMessage = "Учетная запись найдена"
-        static let UpUIWhenkeyboardWillShow = -200.0
-        static let DownUIWhenkeyboardWillShow = 0.0
-    }
 }
 
 // MARK: - UITextFieldDelegate

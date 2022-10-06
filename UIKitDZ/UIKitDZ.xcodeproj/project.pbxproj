@@ -16,7 +16,7 @@
 		AAFE11FF28EAEAB400642264 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE11FE28EAEAB400642264 /* LoginViewController.swift */; };
 		AAFE120128EAEB4500642264 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE120028EAEB4500642264 /* UserData.swift */; };
 		AAFE120328EB058F00642264 /* BMIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE120228EB058F00642264 /* BMIViewController.swift */; };
-		AAFE120528EB074B00642264 /* PersonBMIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE120428EB074A00642264 /* PersonBMIData.swift */; };
+		AAFE120528EB074B00642264 /* PersonBMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFE120428EB074A00642264 /* PersonBMI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +31,7 @@
 		AAFE11FE28EAEAB400642264 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AAFE120028EAEB4500642264 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		AAFE120228EB058F00642264 /* BMIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMIViewController.swift; sourceTree = "<group>"; };
-		AAFE120428EB074A00642264 /* PersonBMIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBMIData.swift; sourceTree = "<group>"; };
+		AAFE120428EB074A00642264 /* PersonBMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonBMI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				AAFE120028EAEB4500642264 /* UserData.swift */,
-				AAFE120428EB074A00642264 /* PersonBMIData.swift */,
+				AAFE120428EB074A00642264 /* PersonBMI.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 				AA21AF9428DB1CC2000D9213 /* AppDelegate.swift in Sources */,
 				AAFE11FF28EAEAB400642264 /* LoginViewController.swift in Sources */,
 				AA21AF9628DB1CC2000D9213 /* SceneDelegate.swift in Sources */,
-				AAFE120528EB074B00642264 /* PersonBMIData.swift in Sources */,
+				AAFE120528EB074B00642264 /* PersonBMI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
