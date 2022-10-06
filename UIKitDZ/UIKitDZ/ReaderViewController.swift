@@ -7,10 +7,87 @@
 
 import UIKit
 
-// MARK: - ReaderViewController
-
 /// Экран самой читалки
 final class ReaderViewController: UIViewController {
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let fontCourier = "Courier"
+        static let fontHelvetica = "Helvetica"
+        static let fontGeorgia = "Georgia"
+        static let fontThonburi = "Thonburi"
+        
+        static let fontCourierBold = "Courier-Bold"
+        static let fontHelveticaBold = "Helvetica-Bold"
+        static let fontGeorgiaBold = "Georgia-Bold"
+        static let fontThonburiBold = "Thonburi-Bold"
+        
+        static let sizeTextForLabelAndButton: CGFloat = 24
+        static let maximumSizeText: CGFloat = 50
+        static let basicSizeText: CGFloat = 20
+        static let minimumSizeText: CGFloat = 10
+        
+        static let textAlignmentCenter = NSTextAlignment.center
+        
+        static let numberOfComponentsForFontTextPicker = 1
+        static let numberOfRowForFontTextPicker = 4
+        static let numberZero = 0
+        
+        static let bigSymbolA = "A"
+        static let smallSymbolA = "a"
+        static let wordBlack = "Black"
+        static let wordWhite = "White"
+        static let nameImageShareButton = "shareplay"
+        
+        static let colorBlack = UIColor.black
+        static let colorWhite = UIColor.white
+        static let colorRed = UIColor.red
+        static let colorCyan = UIColor.cyan
+        static let colorOrange = UIColor.orange
+        static let colorGreen = UIColor.green
+        static let colorGray = UIColor.gray
+        
+        static let textBook = """
+            Swift - это фантастический способ писать приложения для телефонов.
+            Для десктопных компьютеров, серверов, да и чего-либо еще, что запускает и работает при помощи кода.
+            Swift - безопасный, быстрый и интерактивный язык программирования.
+            Swift вобрал в себя лучшие идеи современных языков с мудростью инженерной культуры Apple.
+            Компилятор оптимизирован для производительности.
+            А язык оптимизирован для разработки, без компромиссов с одной или другой стороны.
+            
+            Swift дружелюбен по отношению к новичкам в программировании.
+            Это первый язык программирования промышленного качества.
+            Который также понятен и увлекателен, как скриптовый язык.
+            Написание кода в песочнице позволяет экспериментировать с кодом Swift.
+            И видеть результат мгновенно, без необходимости компилировать и запускать приложение.
+            
+            Swift исключает большой пласт распространенных программных ошибок.
+            При помощи применения современных программных паттернов:
+            - Переменные всегда инициализированы до того, как будут использованы.
+            - Индексы массивов всегда проверяются на out-of-bounds ошибки.
+            - Целые числа проверяются на переполнение.
+            - Опционалы гарантируют, что значения nil будут явно обработаны.
+            - Автоматическое управление памятью
+            - Обработка ошибок позволяет осуществлять контролируемое восстановление от непредвиденных ошибок.
+            
+            Код на Swift скомпилирован и оптимизирован, чтобы получать максимальную отдачу от современного оборудования.
+            Синтаксис и стандартная библиотека спроектированы основываясь на руководстве.
+            Что самый очевидный и простой способ написания кода является лучшим вариантом.
+            Комбинация безопасности и скорости делает Swift лучшим кандидатом для написания программ.
+            От уровня "Hello, World!" и до целой операционной системы.
+            
+            Swift совмещает вывод типов и паттерн-матчинг с современным простым синтаксисом.
+            Позволяя сложным идеям быть выраженными просто и кратко.
+            И в качестве результата не только становится проще писать код.
+            Но и читать его и поддерживать так же становится просто.
+            
+            Swift уже имеет за плечами годы развития, и он продолжает развиваться.
+            Включая в себя все новые и новые возможности.
+            Наши цели на Swift очень амбициозные.
+            Мы с нетерпением ждем, чтобы увидеть что у вас получится создать с его помощью.
+            """
+    }
     
     // MARK: - Private Properties
     
@@ -105,7 +182,7 @@ final class ReaderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setupUI()
         setDelegateAndDataSource()
     }
     
@@ -116,22 +193,113 @@ final class ReaderViewController: UIViewController {
         fontTextPicker.dataSource = self
     }
     
-    private func setUI() {
+    private func setupUI() {
+        setupReaderTextView()
+        setupSizeTextLabel()
+        setupSizeTextSlider()
+        setupFontTextPicker()
+        setupSmallWeightFontButton()
+        setupBigWeightFontButton()
+        setupRedTextColorButton()
+        setupCyanTextColorButton()
+        setupGreenTextColorButton()
+        setupOrangeTextColorButton()
+        setupThemeReaderSegmentedControl()
+        setupShareTextBookButton()
+    }
+    
+    private func setupReaderTextView() {
         view.addSubview(readerTextView)
-        view.addSubview(sizeTextLabel)
-        view.addSubview(sizeTextSlider)
-        view.addSubview(fontTextPicker)
-        view.addSubview(smallWeightFontButton)
-        view.addSubview(bigWeightFontButton)
-        view.addSubview(redTextColorButton)
-        view.addSubview(cyanTextColorButton)
-        view.addSubview(greenTextColorButton)
-        view.addSubview(orangeTextColorButton)
-        view.addSubview(themeReaderSegmentedControl)
-        view.addSubview(shareTextBookButton)
-        
         readerTextView.frame = CGRect(x: 0, y: 50, width: view.bounds.width, height: view.bounds.height - 320)
+    }
+    
+    private func setupSizeTextLabel() {
+        view.addSubview(sizeTextLabel)
         sizeTextLabel.frame = CGRect(x: view.center.x - 50, y: readerTextView.frame.maxY, width: 100, height: 40)
+    }
+    
+    private func setupSizeTextSlider() {
+        view.addSubview(sizeTextSlider)
+        sizeTextSlider.frame = CGRect(x: view.center.x - 150, y: sizeTextLabel.frame.maxY, width: 300, height: 20)
+    }
+    
+    private func setupFontTextPicker() {
+        view.addSubview(fontTextPicker)
+        fontTextPicker.frame = CGRect(x: view.center.x - 90, y: sizeTextSlider.frame.maxY + 10, width: 180, height: 40)
+    }
+    
+    private func setupSmallWeightFontButton() {
+        view.addSubview(smallWeightFontButton)
+        smallWeightFontButton.frame = CGRect(
+            x: view.center.x - 50,
+            y: fontTextPicker.frame.maxY + 10,
+            width: 40,
+            height: 40
+        )
+    }
+    
+    private func setupBigWeightFontButton() {
+        view.addSubview(bigWeightFontButton)
+        bigWeightFontButton.frame = CGRect(
+            x: view.center.x + 10,
+            y: fontTextPicker.frame.maxY + 10,
+            width: 40,
+            height: 40
+        )
+    }
+    
+    private func setupRedTextColorButton() {
+        view.addSubview(redTextColorButton)
+        redTextColorButton.frame = CGRect(
+            x: view.center.x - 110,
+            y: bigWeightFontButton.frame.maxY + 10,
+            width: 40,
+            height: 40
+        )
+    }
+    
+    private func setupCyanTextColorButton() {
+        view.addSubview(cyanTextColorButton)
+        cyanTextColorButton.frame = CGRect(
+            x: view.center.x + 70,
+            y: bigWeightFontButton.frame.maxY + 10,
+            width: 40,
+            height: 40
+        )
+    }
+    
+    private func setupGreenTextColorButton() {
+        view.addSubview(greenTextColorButton)
+        greenTextColorButton.frame = CGRect(
+            x: view.center.x + 10,
+            y: bigWeightFontButton.frame.maxY + 10,
+            width: 40,
+            height: 40
+        )
+    }
+    
+    private func setupOrangeTextColorButton() {
+        view.addSubview(orangeTextColorButton)
+        orangeTextColorButton.frame = CGRect(
+            x: view.center.x - 50,
+            y: bigWeightFontButton.frame.maxY + 10,
+            width: 40,
+            height: 40
+        )
+    }
+    
+    private func setupThemeReaderSegmentedControl() {
+        view.addSubview(themeReaderSegmentedControl)
+        themeReaderSegmentedControl.frame = CGRect(
+            x: view.center.x + 50,
+            y: readerTextView.frame.maxY + 5,
+            width: 100,
+            height: 30
+        )
+    }
+    
+    private func setupShareTextBookButton() {
+        view.addSubview(shareTextBookButton)
         shareTextBookButton.frame = CGRect(
             x: view.center.x - 150,
             y: readerTextView.frame.maxY + 10,
@@ -139,50 +307,6 @@ final class ReaderViewController: UIViewController {
             height: 30
         )
         shareTextBookButton.layer.cornerRadius = shareTextBookButton.frame.height / 4
-        themeReaderSegmentedControl.frame = CGRect(
-            x: view.center.x + 50,
-            y: readerTextView.frame.maxY + 5,
-            width: 100,
-            height: 30
-        )
-        sizeTextSlider.frame = CGRect(x: view.center.x - 150, y: sizeTextLabel.frame.maxY, width: 300, height: 20)
-        fontTextPicker.frame = CGRect(x: view.center.x - 90, y: sizeTextSlider.frame.maxY + 10, width: 180, height: 40)
-        smallWeightFontButton.frame = CGRect(
-            x: view.center.x - 50,
-            y: fontTextPicker.frame.maxY + 10,
-            width: 40,
-            height: 40
-        )
-        bigWeightFontButton.frame = CGRect(
-            x: view.center.x + 10,
-            y: fontTextPicker.frame.maxY + 10,
-            width: 40,
-            height: 40
-        )
-        redTextColorButton.frame = CGRect(
-            x: view.center.x - 110,
-            y: bigWeightFontButton.frame.maxY + 10,
-            width: 40,
-            height: 40
-        )
-        orangeTextColorButton.frame = CGRect(
-            x: view.center.x - 50,
-            y: bigWeightFontButton.frame.maxY + 10,
-            width: 40,
-            height: 40
-        )
-        greenTextColorButton.frame = CGRect(
-            x: view.center.x + 10,
-            y: bigWeightFontButton.frame.maxY + 10,
-            width: 40,
-            height: 40
-        )
-        cyanTextColorButton.frame = CGRect(
-            x: view.center.x + 70,
-            y: bigWeightFontButton.frame.maxY + 10,
-            width: 40,
-            height: 40
-        )
     }
     
     @objc private func shareTextBookButtonAction() {
@@ -264,84 +388,6 @@ final class ReaderViewController: UIViewController {
         readerTextView.font = UIFont(name: currentTextFont, size: currentTextSize)
     }
     
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let fontCourier = "Courier"
-        static let fontHelvetica = "Helvetica"
-        static let fontGeorgia = "Georgia"
-        static let fontThonburi = "Thonburi"
-        
-        static let fontCourierBold = "Courier-Bold"
-        static let fontHelveticaBold = "Helvetica-Bold"
-        static let fontGeorgiaBold = "Georgia-Bold"
-        static let fontThonburiBold = "Thonburi-Bold"
-        
-        static let sizeTextForLabelAndButton: CGFloat = 24
-        static let maximumSizeText: CGFloat = 50
-        static let basicSizeText: CGFloat = 20
-        static let minimumSizeText: CGFloat = 10
-        
-        static let textAlignmentCenter = NSTextAlignment.center
-        
-        static let numberOfComponentsForFontTextPicker = 1
-        static let numberOfRowForFontTextPicker = 4
-        static let numberZero = 0
-        
-        static let bigSymbolA = "A"
-        static let smallSymbolA = "a"
-        static let wordBlack = "Black"
-        static let wordWhite = "White"
-        static let nameImageShareButton = "shareplay"
-        
-        static let colorBlack = UIColor.black
-        static let colorWhite = UIColor.white
-        static let colorRed = UIColor.red
-        static let colorCyan = UIColor.cyan
-        static let colorOrange = UIColor.orange
-        static let colorGreen = UIColor.green
-        static let colorGray = UIColor.gray
-        
-        static let textBook = """
-            Swift - это фантастический способ писать приложения для телефонов.
-            Для десктопных компьютеров, серверов, да и чего-либо еще, что запускает и работает при помощи кода.
-            Swift - безопасный, быстрый и интерактивный язык программирования.
-            Swift вобрал в себя лучшие идеи современных языков с мудростью инженерной культуры Apple.
-            Компилятор оптимизирован для производительности.
-            А язык оптимизирован для разработки, без компромиссов с одной или другой стороны.
-            
-            Swift дружелюбен по отношению к новичкам в программировании.
-            Это первый язык программирования промышленного качества.
-            Который также понятен и увлекателен, как скриптовый язык.
-            Написание кода в песочнице позволяет экспериментировать с кодом Swift.
-            И видеть результат мгновенно, без необходимости компилировать и запускать приложение.
-            
-            Swift исключает большой пласт распространенных программных ошибок.
-            При помощи применения современных программных паттернов:
-            - Переменные всегда инициализированы до того, как будут использованы.
-            - Индексы массивов всегда проверяются на out-of-bounds ошибки.
-            - Целые числа проверяются на переполнение.
-            - Опционалы гарантируют, что значения nil будут явно обработаны.
-            - Автоматическое управление памятью
-            - Обработка ошибок позволяет осуществлять контролируемое восстановление от непредвиденных ошибок.
-            
-            Код на Swift скомпилирован и оптимизирован, чтобы получать максимальную отдачу от современного оборудования.
-            Синтаксис и стандартная библиотека спроектированы основываясь на руководстве.
-            Что самый очевидный и простой способ написания кода является лучшим вариантом.
-            Комбинация безопасности и скорости делает Swift лучшим кандидатом для написания программ.
-            От уровня "Hello, World!" и до целой операционной системы.
-            
-            Swift совмещает вывод типов и паттерн-матчинг с современным простым синтаксисом.
-            Позволяя сложным идеям быть выраженными просто и кратко.
-            И в качестве результата не только становится проще писать код.
-            Но и читать его и поддерживать так же становится просто.
-            
-            Swift уже имеет за плечами годы развития, и он продолжает развиваться.
-            Включая в себя все новые и новые возможности.
-            Наши цели на Swift очень амбициозные.
-            Мы с нетерпением ждем, чтобы увидеть что у вас получится создать с его помощью.
-            """
-    }
 }
 
 // MARK: - UIPickerViewDelegate
