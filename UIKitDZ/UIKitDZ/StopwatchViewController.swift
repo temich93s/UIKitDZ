@@ -11,8 +11,24 @@ import UIKit
 
 /// Экран с секундомером
 final class StopwatchViewController: UIViewController {
-
-    // MARK: - IBOutlet
+    
+    // MARK: - Constants
+    
+    private enum Constants {
+        static let initialTime = "00:00:00"
+        static let timeFormat = "%02d:%02d:%02d"
+        static let wordStart = "Старт"
+        static let wordContinue = "Продолжить"
+        static let wordPause = "Пауза"
+        static let numberZero = 0
+        static let numberOne = 1
+        static let numberTwentyThree = 23
+        static let numberFiftyNine = 59
+        static let timeInterval = 1.0
+        static let numberThree: CGFloat = 3
+    }
+    
+    // MARK: - Private IBOutlet
     
     @IBOutlet private weak var currentTime: UILabel!
     @IBOutlet private weak var startPauseButton: UIButton!
@@ -34,7 +50,7 @@ final class StopwatchViewController: UIViewController {
         setUI()
     }
     
-    // MARK: - IBAction
+    // MARK: - Private IBAction
     
     @IBAction private func startPauseButtonAction(_ sender: UIButton) {
         guard stopwatchIsWorking else {
@@ -91,20 +107,5 @@ final class StopwatchViewController: UIViewController {
         }
         currentTime.text = String(format: Constants.timeFormat, countHours, countMinutes, countSeconds)
     }
-    
-    // MARK: - Constants
-    
-    private enum Constants {
-        static let initialTime = "00:00:00"
-        static let timeFormat = "%02d:%02d:%02d"
-        static let wordStart = "Старт"
-        static let wordContinue = "Продолжить"
-        static let wordPause = "Пауза"
-        static let numberZero = 0
-        static let numberOne = 1
-        static let numberTwentyThree = 23
-        static let numberFiftyNine = 59
-        static let timeInterval = 1.0
-        static let numberThree: CGFloat = 3
-    }
+
 }
