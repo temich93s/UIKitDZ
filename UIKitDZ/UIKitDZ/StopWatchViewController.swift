@@ -7,10 +7,8 @@
 
 import UIKit
 
-// MARK: - StopwatchViewController
-
 /// Экран с секундомером
-final class StopwatchViewController: UIViewController {
+final class StopWatchViewController: UIViewController {
     
     // MARK: - Constants
     
@@ -30,7 +28,7 @@ final class StopwatchViewController: UIViewController {
     
     // MARK: - Private IBOutlet
     
-    @IBOutlet private weak var currentTime: UILabel!
+    @IBOutlet private weak var currentTimeLabel: UILabel!
     @IBOutlet private weak var startPauseButton: UIButton!
     @IBOutlet private weak var resetButton: UIButton!
     
@@ -41,7 +39,7 @@ final class StopwatchViewController: UIViewController {
     private var countSeconds = Constants.numberZero
     private var countMinutes = Constants.numberZero
     private var countHours = Constants.numberZero
-    private var stopwatchIsWorking = false
+    private var isStopwatchIsWorking = false
     
     // MARK: - Lifecycle
     
@@ -53,7 +51,7 @@ final class StopwatchViewController: UIViewController {
     // MARK: - Private IBAction
     
     @IBAction private func startPauseButtonAction(_ sender: UIButton) {
-        guard stopwatchIsWorking else {
+        guard isStopwatchIsWorking else {
             timer = Timer.scheduledTimer(
                 timeInterval: Constants.timeInterval,
                 target: self,
@@ -63,12 +61,12 @@ final class StopwatchViewController: UIViewController {
             )
             startPauseButton.setTitle(Constants.wordPause, for: .normal)
             resetButton.isHidden = false
-            stopwatchIsWorking = true
+            isStopwatchIsWorking = true
             return
         }
         timer.invalidate()
         startPauseButton.setTitle(Constants.wordContinue, for: .normal)
-        stopwatchIsWorking = false
+        isStopwatchIsWorking = false
     }
     
     @IBAction private func resetButton(_ sender: UIButton) {
@@ -77,10 +75,10 @@ final class StopwatchViewController: UIViewController {
         countSeconds = Constants.numberZero
         countMinutes = Constants.numberZero
         countHours = Constants.numberZero
-        currentTime.text = Constants.initialTime
+        currentTimeLabel.text = Constants.initialTime
         startPauseButton.setTitle(Constants.wordStart, for: .normal)
         resetButton.isHidden = true
-        stopwatchIsWorking = false
+        isStopwatchIsWorking = false
     }
     
     // MARK: - Private Methods
@@ -105,7 +103,7 @@ final class StopwatchViewController: UIViewController {
         if countHours > Constants.numberTwentyThree {
             countHours = Constants.numberZero
         }
-        currentTime.text = String(format: Constants.timeFormat, countHours, countMinutes, countSeconds)
+        currentTimeLabel.text = String(format: Constants.timeFormat, countHours, countMinutes, countSeconds)
     }
 
 }
