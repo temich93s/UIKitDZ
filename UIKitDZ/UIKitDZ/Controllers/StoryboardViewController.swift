@@ -7,12 +7,11 @@
 
 import UIKit
 
-/// ViewController
-class ViewController: UIViewController {
-
+/// Экран где констрейнты через сториборд
+final class StoryboardViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
+    
 }
