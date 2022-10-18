@@ -7,7 +7,8 @@
 
 import UIKit
 
-/// светофор через якоря - кодом
+// MARK: - Cветофор через якоря - кодом
+
 final class AnchorViewController: UIViewController {
 
     // MARK: - Private Visual Properties
@@ -63,8 +64,6 @@ final class AnchorViewController: UIViewController {
         createGreenViewConstraint()
         createBlackViewConstraint()
     }
-    
-    // MARK: - Private Constraint Methods
     
     private func createRedViewConstraint() {
         NSLayoutConstraint.activate([

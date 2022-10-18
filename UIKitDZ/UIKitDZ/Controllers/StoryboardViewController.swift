@@ -7,7 +7,8 @@
 
 import UIKit
 
-/// Экран где констрейнты через сториборд
+// MARK: - Экран где констрейнты через сториборд
+
 final class StoryboardViewController: UIViewController {
     
     override func viewDidLoad() {

@@ -7,7 +7,8 @@
 
 import UIKit
 
-/// светофор через стеквью - кодом
+// MARK: - Cветофор через стеквью - кодом
+
 final class StackViewViewController: UIViewController {
 
     // MARK: - Private Visual Properties
@@ -60,8 +61,6 @@ final class StackViewViewController: UIViewController {
         view.addSubview(mainStackView)
         createConstraint()
     }
-    
-    // MARK: - Private Constraint Methods
     
     private func createConstraint() {
         NSLayoutConstraint.activate([
